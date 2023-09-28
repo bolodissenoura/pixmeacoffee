@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className="w-full px-4 absolute ">
+        <header className="w-full px-4 absolute">
           <div className="max-w-[1200px] mx-auto">
             <Image
               src="/logo-blue.svg"
