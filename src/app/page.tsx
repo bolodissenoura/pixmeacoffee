@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center flex-col md:flex-row px-24 w-full gap-20">
+    <main className="flex min-h-screen items-center flex-col md:flex-row px-4 w-full gap-20 max-w-[1200px] mx-auto">
       <div className="md:w-6/12 lg:w-6/12 gap-8 flex flex-col mt-24 md:mt-0 lg:mt-0">
         <h1 className="font-bold text-3xl md:text-6xl lg:text-6xl">
           Apoiar ao brasileirinho nunca foi tão{" "}
