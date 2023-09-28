@@ -21,14 +21,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className="w-full px-20 absolute">
-          <Image
-            src="/logo-blue.svg"
-            alt="Logo - copo de café azul com logo do pix"
-            width={60}
-            height={60}
-            priority
-          />
+        <header className="w-full px-4 absolute ">
+          <div className="max-w-[1200px] mx-auto">
+            <Image
+              src="/logo-blue.svg"
+              alt="Logo - copo de café azul com logo do pix"
+              width={60}
+              height={60}
+              priority
+            />
+          </div>
         </header>
         {children}
       </body>
