@@ -9,7 +9,7 @@ export default function Login() {
         <div
           className="hidden bg-cover lg:block lg:w-2/3"
           style={{
-            backgroundImage: "url(login.jpg)",
+            backgroundImage: "url(https://cdn.discordapp.com/attachments/1082297301072105544/1158249710277120091/pexels-mart-production-8885381.jpg?ex=651b8f9a&is=651a3e1a&hm=80f09b245009266f80c7cf3d63a415066d3915b627ca06a618a24e924bef2336&)",
           }}>
           <div className="flex items-center h-full px-20 bg-primary-500 bg-opacity-40"></div>
         </div>
