@@ -1,17 +1,13 @@
+"use client";
 import "./globals.css";
-import type { Metadata } from "next";
 import { Lato } from "next/font/google";
-import Image from "next/image";
+import { AuthContextProvider } from "./context/AuthContext";
+import NavBar from "@/components/NavBar";
 
 const inter = Lato({
   subsets: ["latin"],
   weight: "700",
 });
-
-export const metadata: Metadata = {
-  title: "Pix me a coffee",
-  description: "Doe para seu criador favorito via PIX.",
-};
 
 export default function RootLayout({
   children,
@@ -21,18 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className="w-full px-4 absolute">
-          <div className="max-w-[1200px] mx-auto">
-            <Image
-              src="/logo-blue.svg"
-              alt="Logo - copo de café azul com logo do pix"
-              width={60}
-              height={60}
-              priority
-            />
-          </div>
-        </header>
-        {children}
+        <AuthContextProvider>
+          {window.location.pathname !== "/login" ? <NavBar /> : <></>}
+          {children}
+        </AuthContextProvider>
       </body>
     </html>
   );
