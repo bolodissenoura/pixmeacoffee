@@ -1,15 +1,31 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { UserAuth } from "@/app/context/AuthContext";
+import { Router } from "next/router";
 
 export default function Login() {
+  const { user, googleSignIn } = UserAuth();
+  React.useEffect(() => {
+    if (user) {
+      console.log(user);
+    }
+  }, [user]);
+  const handleSignIn = async () => {
+    try {
+      googleSignIn();
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="bg-primary-500">
       <div className="flex justify-center h-screen">
         <div
           className="hidden bg-cover lg:block lg:w-2/3"
           style={{
-            backgroundImage: "url(https://cdn.discordapp.com/attachments/1082297301072105544/1158249710277120091/pexels-mart-production-8885381.jpg?ex=651b8f9a&is=651a3e1a&hm=80f09b245009266f80c7cf3d63a415066d3915b627ca06a618a24e924bef2336&)",
+            backgroundImage:
+              "url(https://cdn.discordapp.com/attachments/1082297301072105544/1158249710277120091/pexels-mart-production-8885381.jpg?ex=651b8f9a&is=651a3e1a&hm=80f09b245009266f80c7cf3d63a415066d3915b627ca06a618a24e924bef2336&)",
           }}>
           <div className="flex items-center h-full px-20 bg-primary-500 bg-opacity-40"></div>
         </div>
@@ -35,9 +51,9 @@ export default function Login() {
                 Não perca tempo e dinheiro, <br /> entre com sua conta Google.
               </p>
             </div>
-            <a
-              href="#"
-              className="flex items-center justify-center px-6 py-3 mt-4 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 hover:bg-gray-50">
+            <button
+              onClick={handleSignIn}
+              className="flex items-center justify-center px-6 py-3 mt-4 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 hover:bg-gray-50 w-full">
               <svg className="w-6 h-6 mx-2" viewBox="0 0 40 40">
                 <path
                   d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z"
@@ -58,7 +74,7 @@ export default function Login() {
               </svg>
 
               <span className="mx-2">Login com o Google</span>
-            </a>
+            </button>
             <p className="text-gray-400 mt-4">
               Criando uma conta, você concorda com todos os nossos Termos e
               Condições.
