@@ -17,7 +17,7 @@ export default function Home() {
         </div>
       </div>
       <Image
-        src="/img-1.svg"
+        src="/img-3.svg"
         alt="Exemplo de uso"
         width={500}
         height={500}
