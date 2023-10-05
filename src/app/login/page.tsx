@@ -2,15 +2,16 @@
 import React from "react";
 import Image from "next/image";
 import { UserAuth } from "@/app/context/AuthContext";
-import { Router } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const { user, googleSignIn } = UserAuth();
+  const router = useRouter();
   React.useEffect(() => {
     if (user) {
-      console.log(user);
+      router.push("/dashboard");
     }
-  }, [user]);
+  }, [router, user]);
   const handleSignIn = async () => {
     try {
       googleSignIn();
