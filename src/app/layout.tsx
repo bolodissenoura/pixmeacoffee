@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AuthContextProvider>
-          {pathname !== "/login" ? <NavBar /> : <></>}
+          {pathname !== "/login" && pathname !== "/dashboard" && <NavBar />}
           {children}
         </AuthContextProvider>
       </body>
