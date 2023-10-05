@@ -2,7 +2,8 @@
 <div align="center">
 
 
-![image](https://cdn.discordapp.com/attachments/1082297301072105544/1156913890681159721/MacBook_Pro_14__-_1.png?ex=6516b385&is=65156205&hm=69a6fa2d609a48cc18f2f89ea5da0f2ee4522bfe0cebd0026bc0157cf8e11e0f&)
+![image](https://cdn.discordapp.com/attachments/1082297301072105544/1159499721426079904/image.png?ex=65313f44&is=651eca44&hm=86a23dd870f6ebde86770988524a93928d75dbd37a4acaba7c4eefc3de0fb0d6&)
+
 
 
 </div>
