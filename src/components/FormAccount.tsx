@@ -1,10 +1,13 @@
 import React from "react";
-import Image from "next/image";
-import { UserAuth } from "@/app/context/AuthContext";
-import Link from "next/link";
+import { AccountFormInterface } from "@/app/context/AccountFormContext";
 
-export default function FormAccount() {
+export default function FormAccount(props: AccountFormInterface) {
   const n = 9;
+  const handleMessageChange = (event: any) => {
+    // 👇️ access textarea value
+    props.setDescription(event.target.value);
+    console.log(event.target.value);
+  };
   return (
     <div className="p-4 w-80 md:w-8/12 md:h-96 bg-white md:mt-16 rounded-2xl shadow-xl overflow-hidden">
       <div className="md:flex-row flex-col flex w-full">
@@ -44,6 +47,8 @@ export default function FormAccount() {
               descrição:
             </label>
             <textarea
+              onChange={handleMessageChange}
+              value={props.description}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
               placeholder="Um pouco sobre você..."
             />

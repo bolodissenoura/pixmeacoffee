@@ -5,6 +5,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 import NavBar from "@/components/NavBar";
 import { usePathname } from "next/navigation";
 import React from "react";
+import { AccountFormProvider } from "./context/AccountFormContext";
 
 const inter = Lato({
   subsets: ["latin"],
@@ -21,8 +22,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AuthContextProvider>
-          {pathname !== "/login" && pathname !== "/dashboard" && <NavBar />}
-          {children}
+          <AccountFormProvider>
+            {pathname !== "/login" && pathname !== "/dashboard" && <NavBar />}
+            {children}
+          </AccountFormProvider>
         </AuthContextProvider>
       </body>
     </html>

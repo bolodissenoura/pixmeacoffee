@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import { UserAuth } from "@/app/context/AuthContext";
 import Link from "next/link";
 
 interface CardBadgeInterface {
   user: any;
+  description: string;
   socialLinks: {
     link: string;
     name: string;
@@ -30,7 +30,7 @@ export default function CardBadge(props: CardBadgeInterface) {
         </div>
         <div className="flex w-full h-16">
           <Image
-            src={props.user?.photoURL}
+            src={props.user?.photoURL || ""}
             alt="Foto do usuario"
             className="w-14 h-14 rounded-full cursor-pointer bg-primary-500 p-1"
             width={80}
@@ -46,10 +46,7 @@ export default function CardBadge(props: CardBadgeInterface) {
           <p
             className="text-sm text-gray-500 font-normal"
             style={{ fontSize: "12px", lineHeight: "1rem" }}>
-            Oi! Eu sou o Filipe Deschamps, o cara que ama programar, tecnologia
-            e compartilhar conhecimento com todo mundo que tá a fim de
-            aprender.No meu canal no YouTube, a gente explora o mundo da
-            programação de uma forma delicinha e descomplicada.
+            {props.description}
           </p>
         </div>
         <div className="w-full h-16">

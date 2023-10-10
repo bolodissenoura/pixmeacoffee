@@ -5,9 +5,12 @@ import { useRouter } from "next/navigation";
 import DashboardHeader from "@/components/DashboardHeader";
 import CardBadge from "@/components/CardBadge";
 import FormAccount from "@/components/FormAccount";
+import { AccountForm } from "../context/AccountFormContext";
 
 export default function Dashboard() {
   const { user, logOut } = UserAuth();
+  const { description, setDescription } = AccountForm();
+
   const router = useRouter();
   React.useEffect(() => {
     if (!user) {
@@ -21,6 +24,7 @@ export default function Dashboard() {
       console.log(error);
     }
   };
+
   const fakeDataCardBadge = [
     {
       link: "www.youtube.com/@FilipeDeschamps",
@@ -100,8 +104,15 @@ export default function Dashboard() {
     <div className="bg-gray-300 w-full md:h-screen">
       <DashboardHeader user={user} handleLogOut={handleLogOut} />
       <div className="flex flex-col items-center md:items-start md:flex-row gap-8 w-full md:px-40 pb-40 md:pb-0">
-        <CardBadge socialLinks={fakeDataCardBadge} user={user} />
-        <FormAccount />
+        <CardBadge
+          description={description}
+          socialLinks={fakeDataCardBadge}
+          user={user}
+        />
+        <FormAccount
+          description={description}
+          setDescription={setDescription}
+        />
       </div>
     </div>
   );
