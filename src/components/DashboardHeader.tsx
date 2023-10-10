@@ -37,11 +37,6 @@ export default function DashboardHeader(props: DashboardHeaderInterface) {
               Conta
             </p>
           </div>
-          <div className="ml-4">
-            <p className="text-md text-gray-700 hover:bg-gray-100 transition rounded-xl p-2 cursor-pointer">
-              Área Pix
-            </p>
-          </div>
         </div>
         <div>
           <div className="ml-2 h-full flex align-middle items-center">
