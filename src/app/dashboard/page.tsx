@@ -99,7 +99,7 @@ export default function Dashboard() {
   return (
     <div className="bg-gray-100 w-full md:h-screen">
       <DashboardHeader user={user} handleLogOut={handleLogOut} />
-      <div className="flex flex-col items-center md:flex-row gap-8 w-full md:px-80">
+      <div className="flex flex-col items-center md:items-start md:flex-row gap-8 w-full md:px-80">
         <CardBadge socialLinks={fakeDataCardBadge} user={user} />
         <FormAccount />
       </div>
