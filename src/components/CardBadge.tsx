@@ -43,7 +43,9 @@ export default function CardBadge(props: CardBadgeInterface) {
           </div>
         </div>
         <div className="flex w-full">
-          <p className="text-sm text-gray-500">
+          <p
+            className="text-sm text-gray-500 font-normal"
+            style={{ fontSize: "12px", lineHeight: "1rem" }}>
             Oi! Eu sou o Filipe Deschamps, o cara que ama programar, tecnologia
             e compartilhar conhecimento com todo mundo que tá a fim de
             aprender.No meu canal no YouTube, a gente explora o mundo da
@@ -73,18 +75,18 @@ export default function CardBadge(props: CardBadgeInterface) {
           </div>
           <Image
             src={
-              "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=00020126460014BR.GOV.BCB.PIX0124danielunivap@outlook.com5204000053039865802BR5925DANIEL ALVES LIMA E SILVA6009SAO PAULO622605227XYeTvpL1ebPnPktWnIWbJ6304D81D"
+              "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=00020126460014BR.GOV.BCB.PIX0124danielunivap@outlook.com5204000053039865802BR5925DANIEL ALVES LIMA E SILVA6009SAO PAULO622605227XYeTvpL1ebPnPktWnIWbJ6304D81D"
             }
             alt="Pix me a coffe escrito com coracoes azuis rodeando."
-            width={80}
-            height={80}
+            width={250}
+            height={250}
             priority
           />
           <Image
             src={"pixmeacoffee.svg"}
             alt="Pix me a coffe escrito com coracoes azuis rodeando."
-            width={80}
-            height={80}
+            width={120}
+            height={120}
             priority
           />
         </div>
