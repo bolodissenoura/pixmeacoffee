@@ -28,7 +28,9 @@ export default function DashboardHeader(props: DashboardHeaderInterface) {
           )}
         </div>
       </div>
-      <div className="bg-white w-full h-14 flex justify-between px-20 md:px-80 mt-0.5">
+      <div
+        style={{ zIndex: "9" }}
+        className="bg-white relative w-full h-14 flex justify-between px-20 md:px-80 mt-0.5">
         <div className="flex align-middle items-center">
           <div className="ml-2 h-full flex align-middle items-center border-b-primary-500 border-b-4 border-solid">
             <p className="text-md text-gray-700 hover:bg-gray-100 transition rounded-xl p-2 cursor-pointer">
