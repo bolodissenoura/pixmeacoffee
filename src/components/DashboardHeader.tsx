@@ -11,7 +11,7 @@ interface DashboardHeaderInterface {
 export default function DashboardHeader(props: DashboardHeaderInterface) {
   return (
     <div>
-      <div className="bg-white w-full h-20 flex align-middle items-center justify-start px-20 md:px-80">
+      <div className="bg-white w-full h-20 flex align-middle items-center justify-start px-20 md:px-40">
         <div className="flex gap-2">
           <h1 className="text-xl text-gray-900">Dashboard - Boas vindas, </h1>
           {props.user ? (
@@ -30,7 +30,7 @@ export default function DashboardHeader(props: DashboardHeaderInterface) {
       </div>
       <div
         style={{ zIndex: "9" }}
-        className="bg-white relative w-full h-14 flex justify-between px-20 md:px-80 mt-0.5">
+        className="bg-white relative w-full h-14 flex justify-between px-20 md:px-40 mt-0.5">
         <div className="flex align-middle items-center">
           <div className="ml-2 h-full flex align-middle items-center border-b-primary-500 border-b-4 border-solid">
             <p className="text-md text-gray-700 hover:bg-gray-100 transition rounded-xl p-2 cursor-pointer">

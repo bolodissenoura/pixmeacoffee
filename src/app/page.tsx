@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -10,14 +11,19 @@ export default function Home() {
         </h1>
         <h2 className="font-bold text-xl">
           Receba no pix sem taxas. <br />
-          <span className="text-primary-500">100%</span> Grátis. Como o pix deve ser :)
+          <span className="text-primary-500">100%</span> Grátis. Como o pix deve
+          ser :)
         </h2>
         <div className="bg-white rounded-full shadow-lg shadow-primary-500 w-full h-14 flex items-center justify-between px-2 md:px-4">
           <h2 className="font-bold md:text-2xl lg:text-2xl">
             pixmeacoffe.com.br/
             <span className="text-primary-500">seunome</span>
           </h2>
-          <button className="rounded-full bg-primary-500 py-2 md:px-4 px-2 text-white">Criar minha página</button>
+          <Link href={"/login"}>
+            <div className="rounded-full bg-primary-500 py-2 md:px-4 px-2 text-white">
+              Criar minha página
+            </div>
+          </Link>
         </div>
       </div>
       <Image
