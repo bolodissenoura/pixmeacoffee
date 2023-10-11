@@ -9,7 +9,7 @@ export default function FormAccount(props: AccountFormInterface) {
     console.log(event.target.value);
   };
   return (
-    <div className="p-4 w-80 md:w-8/12 md:h-96 bg-white md:mt-16 rounded-2xl shadow-xl overflow-hidden">
+    <div className="p-4 w-80 md:w-8/12 md:h-96 bg-white md:mt-16 rounded-2xl overflow-hidden">
       <div className="md:flex-row flex-col flex w-full">
         <div className="flex flex-col gap-4 w-full">
           <div>
@@ -49,6 +49,7 @@ export default function FormAccount(props: AccountFormInterface) {
             <textarea
               onChange={handleMessageChange}
               value={props.description}
+              maxLength={150}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
               placeholder="Um pouco sobre você..."
             />
