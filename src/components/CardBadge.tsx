@@ -42,10 +42,14 @@ export default function CardBadge(props: CardBadgeInterface) {
             <p className="text text-gray-500">/daniellimae</p>
           </div>
         </div>
-        <div className="flex w-full">
+        <div className="flex w-full p-4">
           <p
-            className="text-sm text-gray-500 font-normal"
-            style={{ fontSize: "12px", lineHeight: "1rem" }}>
+            className="text-sm text-gray-500 font-normal break-words max-w-full"
+            style={{
+              fontSize: "12px",
+              lineHeight: "1rem",
+              wordWrap: "break-word",
+            }}>
             {props.description}
           </p>
         </div>
