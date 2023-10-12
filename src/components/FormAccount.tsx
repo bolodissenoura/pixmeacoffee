@@ -51,8 +51,9 @@ export default function FormAccount(props: FormAccountInterface) {
             <textarea
               onChange={(e) => props.data.setDescription(e.target.value)}
               value={props.data.description}
+              rows={5}
               maxLength={150}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
+              className="bg-gray-50 resize-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
               placeholder="Um pouco sobre você..."
             />
           </div>
