@@ -142,17 +142,17 @@ export default function CardBadge(props: CardBadgeInterface) {
         )}
         <SocialLinks data={props.data} />
         <div className="w-full flex flex-col justify-center items-center gap-4">
-          <div>
-            <p>
-              Me apoie com a quantia que quiser. <br />{" "}
-            </p>
-            <p className="text-sm text-gray-500">
-              <span className="text-primary-500">Via pix</span>. Receberei 100%
-              desse valor :)
-            </p>
-          </div>
           {props.data.pixKey.length > 20 ? (
             <>
+              <div>
+                <p>
+                  Me apoie com a quantia que quiser. <br />{" "}
+                </p>
+                <p className="text-sm text-gray-500">
+                  <span className="text-primary-500">Via pix</span>. Receberei
+                  100% desse valor :)
+                </p>
+              </div>
               <Image
                 src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${props.data.pixKey}`}
                 alt="Pix me a coffe escrito com coracoes azuis rodeando."

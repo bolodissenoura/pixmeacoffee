@@ -9,6 +9,7 @@ import {
   AccountForm,
   AccountFormInterface,
 } from "../context/AccountFormContext";
+import PublishBtn from "@/components/PublishBtn";
 
 export default function Dashboard() {
   const { user, logOut } = UserAuth();
@@ -57,11 +58,12 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="bg-gray-300 w-full md:pb-10">
+    <div className="bg-gray-300 w-full min-h-screen md:pb-10">
       <DashboardHeader user={user} handleLogOut={handleLogOut} />
       <div className="flex flex-col items-center md:items-start md:flex-row gap-8 w-full md:px-40 pb-40 md:pb-0">
         <CardBadge data={data} user={user} />
         <FormAccount data={data} />
+        <PublishBtn />
       </div>
     </div>
   );
