@@ -7,15 +7,18 @@ export interface AccountFormInterface {
   setDescription: React.Dispatch<React.SetStateAction<string>>;
   page: string;
   setPage: React.Dispatch<React.SetStateAction<string>>;
+  pixKey: string;
+  setPixKey: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export function AccountFormProvider({ children }: any) {
   const [description, setDescription] = React.useState<string>("");
   const [page, setPage] = React.useState<string>("");
+  const [pixKey, setPixKey] = React.useState<string>("");
 
   return (
     <AccountFormContext.Provider
-      value={{ description, setDescription, page, setPage }}>
+      value={{ description, setDescription, page, setPage, pixKey, setPixKey }}>
       {children}
     </AccountFormContext.Provider>
   );

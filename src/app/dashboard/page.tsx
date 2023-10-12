@@ -12,7 +12,8 @@ import {
 
 export default function Dashboard() {
   const { user, logOut } = UserAuth();
-  const { description, setDescription, page, setPage } = AccountForm();
+  const { description, setDescription, page, setPage, pixKey, setPixKey } =
+    AccountForm();
 
   const router = useRouter();
   React.useEffect(() => {
@@ -108,6 +109,8 @@ export default function Dashboard() {
     description,
     page,
     setPage,
+    pixKey,
+    setPixKey,
   };
 
   return (

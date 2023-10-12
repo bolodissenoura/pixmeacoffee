@@ -20,6 +20,7 @@ export default function FormAccount(props: FormAccountInterface) {
             <input
               type="text"
               id="namepage"
+              onChange={(e) => props.data.setPixKey(e.target.value)}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
               placeholder="xxx-xxx-xxx-xxx..."
               required

@@ -86,15 +86,32 @@ export default function CardBadge(props: CardBadgeInterface) {
               desse valor :)
             </p>
           </div>
-          <Image
-            src={
-              "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=00020126460014BR.GOV.BCB.PIX0124danielunivap@outlook.com5204000053039865802BR5925DANIEL ALVES LIMA E SILVA6009SAO PAULO622605227XYeTvpL1ebPnPktWnIWbJ6304D81D"
-            }
-            alt="Pix me a coffe escrito com coracoes azuis rodeando."
-            width={250}
-            height={250}
-            priority
-          />
+          {props.data.pixKey.length > 20 ? (
+            <>
+              <Image
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${props.data.pixKey}`}
+                alt="Pix me a coffe escrito com coracoes azuis rodeando."
+                width={250}
+                height={250}
+                priority
+              />
+            </>
+          ) : (
+            <>
+              <Image
+                src={"/waiting.gif"}
+                className="rounded shadow"
+                alt="Pix me a coffe escrito com coracoes azuis rodeando."
+                width={250}
+                height={250}
+                priority
+              />
+              <p className="text-sm text-gray-900 ml-4">
+                Cole a <span className="text-primary-500">chave aleatória pix</span>{" "}
+                para gerarmos seu qr-code.
+              </p>
+            </>
+          )}
           <Image
             src={"pixmeacoffee.svg"}
             alt="Pix me a coffe escrito com coracoes azuis rodeando."
