@@ -1,13 +1,12 @@
 import React from "react";
 import { AccountFormInterface } from "@/app/context/AccountFormContext";
 
-export default function FormAccount(props: AccountFormInterface) {
+interface FormAccountInterface {
+  data: AccountFormInterface;
+}
+
+export default function FormAccount(props: FormAccountInterface) {
   const n = 9;
-  const handleMessageChange = (event: any) => {
-    // 👇️ access textarea value
-    props.setDescription(event.target.value);
-    console.log(event.target.value);
-  };
   return (
     <div className="p-4 w-80 md:w-8/12 md:h-96 bg-white md:mt-16 rounded-2xl overflow-hidden">
       <div className="md:flex-row flex-col flex w-full">
@@ -35,6 +34,8 @@ export default function FormAccount(props: AccountFormInterface) {
             <input
               type="text"
               id="namepage"
+              maxLength={15}
+              onChange={(e) => props.data.setPage(e.target.value)}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
               placeholder="/suapagina"
               required
@@ -47,8 +48,8 @@ export default function FormAccount(props: AccountFormInterface) {
               descrição:
             </label>
             <textarea
-              onChange={handleMessageChange}
-              value={props.description}
+              onChange={(e) => props.data.setDescription(e.target.value)}
+              value={props.data.description}
               maxLength={150}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
               placeholder="Um pouco sobre você..."

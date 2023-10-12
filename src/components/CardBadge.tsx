@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { AccountFormInterface } from "@/app/context/AccountFormContext";
 
 interface CardBadgeInterface {
   user: any;
-  description: string;
+  data: AccountFormInterface;
   socialLinks: {
     link: string;
     name: string;
@@ -39,20 +40,31 @@ export default function CardBadge(props: CardBadgeInterface) {
           />
           <div className="ml-2">
             <p className="text-xl">{props.user?.displayName}</p>
-            <p className="text text-gray-500">/daniellimae</p>
+            {props.data.page.length > 0 ? (
+              <p className="text text-gray-500">
+                <span className="text-primary-500">/</span>
+                {props.data?.page}
+              </p>
+            ) : (
+              <p className="text text-gray-300">/suapagina</p>
+            )}
           </div>
         </div>
-        <div className="flex w-full p-4">
-          <p
-            className="text-sm text-gray-500 font-normal break-words max-w-full"
-            style={{
-              fontSize: "12px",
-              lineHeight: "1rem",
-              wordWrap: "break-word",
-            }}>
-            {props.description}
-          </p>
-        </div>
+        {props.data.description.length > 0 ? (
+          <div className="flex w-full p-4">
+            <p
+              className="text-sm text-gray-500 font-normal break-words max-w-full"
+              style={{
+                fontSize: "12px",
+                lineHeight: "1rem",
+                wordWrap: "break-word",
+              }}>
+              {props.data.description}
+            </p>
+          </div>
+        ) : (
+          <></>
+        )}
         <div className="w-full h-16">
           <div className="flex justify-center items-center w-full gap-8 h-12 cursor-pointer">
             {props.socialLinks?.map((item) => (

@@ -5,11 +5,14 @@ import { useRouter } from "next/navigation";
 import DashboardHeader from "@/components/DashboardHeader";
 import CardBadge from "@/components/CardBadge";
 import FormAccount from "@/components/FormAccount";
-import { AccountForm } from "../context/AccountFormContext";
+import {
+  AccountForm,
+  AccountFormInterface,
+} from "../context/AccountFormContext";
 
 export default function Dashboard() {
   const { user, logOut } = UserAuth();
-  const { description, setDescription } = AccountForm();
+  const { description, setDescription, page, setPage } = AccountForm();
 
   const router = useRouter();
   React.useEffect(() => {
@@ -100,19 +103,19 @@ export default function Dashboard() {
     },
   ];
 
+  const data: AccountFormInterface = {
+    setDescription,
+    description,
+    page,
+    setPage,
+  };
+
   return (
     <div className="bg-gray-300 w-full md:pb-10">
       <DashboardHeader user={user} handleLogOut={handleLogOut} />
       <div className="flex flex-col items-center md:items-start md:flex-row gap-8 w-full md:px-40 pb-40 md:pb-0">
-        <CardBadge
-          description={description}
-          socialLinks={fakeDataCardBadge}
-          user={user}
-        />
-        <FormAccount
-          description={description}
-          setDescription={setDescription}
-        />
+        <CardBadge data={data} socialLinks={fakeDataCardBadge} user={user} />
+        <FormAccount data={data} />
       </div>
     </div>
   );
