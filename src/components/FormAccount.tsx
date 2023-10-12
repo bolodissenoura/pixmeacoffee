@@ -67,9 +67,17 @@ export default function FormAccount(props: FormAccountInterface) {
             <input
               type="text"
               id="namepage"
+              onChange={(e) => {
+                const newValue = e.target.value;
+                props.data?.setSocialLinks(() => [
+                  { name: "youtube", value: newValue },
+                  { name: "twitch", value: props.data.socialLinks[1]?.value },
+                  { name: "twitter", value: props.data.socialLinks[2]?.value },
+                  { name: "tabnews", value: props.data.socialLinks[3]?.value },
+                ]);
+              }}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
               placeholder=""
-              required
             />
           </div>
           <div>
@@ -81,9 +89,17 @@ export default function FormAccount(props: FormAccountInterface) {
             <input
               type="text"
               id="namepage"
+              onChange={(e) => {
+                const newValue = e.target.value;
+                props.data?.setSocialLinks(() => [
+                  { name: "youtube", value: props.data.socialLinks[0]?.value },
+                  { name: "twitch", value: newValue },
+                  { name: "twitter", value: props.data.socialLinks[2]?.value },
+                  { name: "tabnews", value: props.data.socialLinks[3]?.value },
+                ]);
+              }}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
               placeholder=""
-              required
             />
           </div>
           <div>
@@ -95,9 +111,17 @@ export default function FormAccount(props: FormAccountInterface) {
             <input
               type="text"
               id="namepage"
+              onChange={(e) => {
+                const newValue = e.target.value;
+                props.data?.setSocialLinks(() => [
+                  { name: "youtube", value: props.data.socialLinks[0]?.value },
+                  { name: "twitch", value: props.data.socialLinks[1]?.value },
+                  { name: "twitter", value: newValue },
+                  { name: "tabnews", value: props.data.socialLinks[3]?.value },
+                ]);
+              }}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
               placeholder=""
-              required
             />
           </div>
           <div>
@@ -109,9 +133,17 @@ export default function FormAccount(props: FormAccountInterface) {
             <input
               type="text"
               id="namepage"
+              onChange={(e) => {
+                const newValue = e.target.value;
+                props.data?.setSocialLinks(() => [
+                  { name: "youtube", value: props.data.socialLinks[0]?.value },
+                  { name: "twitch", value: props.data.socialLinks[1]?.value },
+                  { name: "twitter", value: props.data.socialLinks[2]?.value },
+                  { name: "tabnews", value: newValue },
+                ]);
+              }}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
               placeholder=""
-              required
             />
           </div>
         </div>
