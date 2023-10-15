@@ -10,6 +10,8 @@ import {
   AccountFormInterface,
 } from "../context/AccountFormContext";
 import PublishBtn from "@/components/PublishBtn";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../firebase";
 
 export default function Dashboard() {
   const { user, logOut } = UserAuth();
@@ -23,6 +25,19 @@ export default function Dashboard() {
     socialLinks,
     setSocialLinks,
   } = AccountForm();
+
+  const data: AccountFormInterface = {
+    setDescription,
+    description,
+    page,
+    setPage,
+    pixKey,
+    setPixKey,
+    socialLinks,
+    setSocialLinks,
+  };
+  // this initial data will come on GET from database
+  const [showButton, setShowButton] = React.useState<boolean>(false);
 
   const router = useRouter();
   React.useEffect(() => {
@@ -46,15 +61,20 @@ export default function Dashboard() {
     }
   };
 
-  const data: AccountFormInterface = {
-    setDescription,
-    description,
-    page,
-    setPage,
-    pixKey,
-    setPixKey,
-    socialLinks,
-    setSocialLinks,
+  const postRef = collection(db, "userinfo");
+
+  const handleSubmitForm = async () => {
+    const cardData = {
+      description: data.description,
+      namepage: data.page,
+      pixKey: data.pixKey,
+    };
+    await addDoc(postRef, {
+      cardData,
+      username: user?.displayName,
+      id: user?.uid,
+    });
+    console.log(cardData);
   };
 
   return (
@@ -63,7 +83,10 @@ export default function Dashboard() {
       <div className="flex flex-col items-center md:items-start md:flex-row gap-8 w-full md:px-40 pb-40 md:pb-0">
         <CardBadge data={data} user={user} />
         <FormAccount data={data} />
-        <PublishBtn />
+        <PublishBtn
+          showButton={showButton}
+          handleSubmitForm={handleSubmitForm}
+        />
       </div>
     </div>
   );
