@@ -61,7 +61,7 @@ export default function Dashboard() {
     }
   };
 
-  const postRef = collection(db, "userinfo");
+  const postRef = collection(db, "users");
 
   const handleSubmitForm = async () => {
     const cardData = {
