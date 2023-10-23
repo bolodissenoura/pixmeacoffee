@@ -7,6 +7,13 @@ export type SocialLinksType = {
   value: string;
 };
 
+export type FormsStateType = {
+  pageStatus: "success" | "error" | "none";
+  pixKeyStatus: "success" | "error" | "none";
+  socialLinksStatus: "success" | "error" | "none";
+  descriptionStatus: "success" | "error" | "none";
+};
+
 export interface AccountFormInterface {
   description: string;
   setDescription: React.Dispatch<React.SetStateAction<string>>;
@@ -16,6 +23,8 @@ export interface AccountFormInterface {
   setPixKey: React.Dispatch<React.SetStateAction<string>>;
   socialLinks: SocialLinksType[];
   setSocialLinks: React.Dispatch<React.SetStateAction<SocialLinksType[]>>;
+  status: FormsStateType;
+  setStatus: React.Dispatch<React.SetStateAction<FormsStateType>>;
 }
 
 export function AccountFormProvider({ children }: any) {
@@ -23,6 +32,12 @@ export function AccountFormProvider({ children }: any) {
   const [page, setPage] = React.useState<string>("");
   const [pixKey, setPixKey] = React.useState<string>("");
   const [socialLinks, setSocialLinks] = React.useState<SocialLinksType[]>([]);
+  const [status, setStatus] = React.useState<FormsStateType>({
+    pageStatus: "none",
+    pixKeyStatus: "none",
+    socialLinksStatus: "none",
+    descriptionStatus: "none",
+  });
 
   return (
     <AccountFormContext.Provider
@@ -35,6 +50,8 @@ export function AccountFormProvider({ children }: any) {
         setPixKey,
         socialLinks,
         setSocialLinks,
+        setStatus,
+        status,
       }}>
       {children}
     </AccountFormContext.Provider>
