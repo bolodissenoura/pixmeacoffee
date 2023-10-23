@@ -1,11 +1,65 @@
 import React from "react";
 import { AccountFormInterface } from "@/app/context/AccountFormContext";
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 
 interface FormAccountInterface {
   data: AccountFormInterface;
+  userId: string;
 }
 
 export default function FormAccount(props: FormAccountInterface) {
+  const db = getFirestore();
+  const usernameToSearch = props.data.page;
+  const usersCollection = collection(db, "users");
+  const q = query(usersCollection, where("namepage", "==", usernameToSearch));
+  const handleCheckUser = () => {
+    getDocs(q)
+      .then((querySnapshot) => {
+        if (querySnapshot.size === 0) {
+          props.data?.setStatus({
+            ...props.data?.status,
+            pageStatus: "error",
+          });
+          console.log("aqui");
+        } else {
+          querySnapshot.forEach((doc) => {
+            if (doc.data().id === props.userId) {
+              props.data?.setStatus({
+                ...props.data?.status,
+                pageStatus: "success",
+              });
+            } else {
+              props.data?.setStatus({
+                ...props.data?.status,
+                pageStatus: "error",
+              });
+            }
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar usuário:", error);
+      });
+    getDocs;
+  };
+  const inputBorder = (data: "success" | "error" | "none") => {
+    switch (data) {
+      case "error":
+        return "border-red-500";
+      case "success":
+        return "border-green-500";
+      case "none":
+        return "border-gray-300";
+      default:
+        return "border-gray-300";
+    }
+  };
   const n = 9;
   return (
     <div className="p-4 w-80 md:w-8/12 md:h-96 bg-white md:mt-16 rounded-2xl overflow-hidden">
@@ -37,7 +91,10 @@ export default function FormAccount(props: FormAccountInterface) {
               id="namepage"
               maxLength={15}
               onChange={(e) => props.data.setPage(e.target.value)}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
+              onBlur={handleCheckUser}
+              className={`${inputBorder(
+                props.data.status?.pageStatus
+              )} bg-gray-50  border  text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5`}
               placeholder="/suapagina"
               required
             />
