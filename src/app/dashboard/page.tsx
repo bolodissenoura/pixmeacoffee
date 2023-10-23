@@ -24,6 +24,8 @@ export default function Dashboard() {
     setPixKey,
     socialLinks,
     setSocialLinks,
+    status,
+    setStatus,
   } = AccountForm();
 
   const data: AccountFormInterface = {
@@ -35,6 +37,8 @@ export default function Dashboard() {
     setPixKey,
     socialLinks,
     setSocialLinks,
+    status,
+    setStatus,
   };
   // this initial data will come on GET from database
   const [showButton, setShowButton] = React.useState<boolean>(false);
@@ -64,17 +68,13 @@ export default function Dashboard() {
   const postRef = collection(db, "users");
 
   const handleSubmitForm = async () => {
-    const cardData = {
+    await addDoc(postRef, {
       description: data.description,
       namepage: data.page,
       pixKey: data.pixKey,
-    };
-    await addDoc(postRef, {
-      cardData,
       username: user?.displayName,
       id: user?.uid,
     });
-    console.log(cardData);
   };
 
   return (
@@ -82,7 +82,7 @@ export default function Dashboard() {
       <DashboardHeader user={user} handleLogOut={handleLogOut} />
       <div className="flex flex-col items-center md:items-start md:flex-row gap-8 w-full md:px-40 pb-40 md:pb-0">
         <CardBadge data={data} user={user} />
-        <FormAccount data={data} />
+        <FormAccount data={data} userId={user?.uid} />
         <PublishBtn
           showButton={showButton}
           handleSubmitForm={handleSubmitForm}
