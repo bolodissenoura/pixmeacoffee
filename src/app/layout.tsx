@@ -4,6 +4,8 @@ import { Lato } from "next/font/google";
 import { AuthContextProvider } from "./context/AuthContext";
 import React from "react";
 import { AccountFormProvider } from "./context/AccountFormContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Lato({
   subsets: ["latin"],
@@ -21,6 +23,7 @@ export default function RootLayout({
         <AuthContextProvider>
           <AccountFormProvider>{children}</AccountFormProvider>
         </AuthContextProvider>
+        <ToastContainer />
       </body>
     </html>
   );
