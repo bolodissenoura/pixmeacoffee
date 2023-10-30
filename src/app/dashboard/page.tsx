@@ -42,7 +42,7 @@ export default function Dashboard() {
   };
   // this initial data will come on GET from database
   const [showButton, setShowButton] = React.useState<boolean>(false);
-
+  console.log(status?.pageStatus);
   const router = useRouter();
   React.useEffect(() => {
     if (user) {
@@ -73,6 +73,7 @@ export default function Dashboard() {
       namepage: data.page,
       pixKey: data.pixKey,
       username: user?.displayName,
+      photoURL: user?.photoURL,
       id: user?.uid,
     });
   };
@@ -81,10 +82,13 @@ export default function Dashboard() {
     <div className="bg-gray-300 w-full min-h-screen md:pb-10">
       <DashboardHeader user={user} handleLogOut={handleLogOut} />
       <div className="flex flex-col items-center md:items-start md:flex-row gap-8 w-full md:px-40 pb-40 md:pb-0">
-        <CardBadge data={data} user={user} />
+        <CardBadge
+          data={data}
+          user={{ username: user?.displayName, photoURL: user.photoURL }}
+        />
         <FormAccount data={data} userId={user?.uid} />
         <PublishBtn
-          showButton={showButton}
+          showButton={status?.pageStatus === "success"}
           handleSubmitForm={handleSubmitForm}
         />
       </div>
