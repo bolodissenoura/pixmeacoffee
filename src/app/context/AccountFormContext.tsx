@@ -9,6 +9,7 @@ export type SocialLinksType = {
 
 export type FormsStateType = {
   pageStatus: "success" | "error" | "none";
+  pageStatusMsg: string;
   pixKeyStatus: "success" | "error" | "none";
   socialLinksStatus: "success" | "error" | "none";
   descriptionStatus: "success" | "error" | "none";
@@ -34,6 +35,7 @@ export function AccountFormProvider({ children }: any) {
   const [socialLinks, setSocialLinks] = React.useState<SocialLinksType[]>([]);
   const [status, setStatus] = React.useState<FormsStateType>({
     pageStatus: "none",
+    pageStatusMsg: "",
     pixKeyStatus: "none",
     socialLinksStatus: "none",
     descriptionStatus: "none",
