@@ -17,27 +17,29 @@ export default function FormAccount(props: FormAccountInterface) {
   const db = getFirestore();
   const usernameToSearch = props.data.page;
   const usersCollection = collection(db, "users");
-  const q = query(usersCollection, where("namepage", "==", usernameToSearch));
   const handleCheckUser = () => {
+    const q = query(usersCollection, where("namepage", "==", usernameToSearch));
     getDocs(q)
       .then((querySnapshot) => {
         if (querySnapshot.size === 0) {
           props.data?.setStatus({
             ...props.data?.status,
-            pageStatus: "error",
+            pageStatus: "success",
+            pageStatusMsg: "Este nome está disponível para uso :)",
           });
-          console.log("aqui");
         } else {
           querySnapshot.forEach((doc) => {
             if (doc.data().id === props.userId) {
               props.data?.setStatus({
                 ...props.data?.status,
                 pageStatus: "success",
+                pageStatusMsg: "Este nome já é seu :)",
               });
             } else {
               props.data?.setStatus({
                 ...props.data?.status,
                 pageStatus: "error",
+                pageStatusMsg: "Este nome já tem dono, tente outro nome.",
               });
             }
           });
@@ -48,16 +50,19 @@ export default function FormAccount(props: FormAccountInterface) {
       });
     getDocs;
   };
-  const inputBorder = (data: "success" | "error" | "none") => {
+  const inputColor = (
+    data: "success" | "error" | "none",
+    prop: "text" | "border"
+  ) => {
     switch (data) {
       case "error":
-        return "border-red-500";
+        return `${prop}-red-500`;
       case "success":
-        return "border-green-500";
+        return `${prop}-green-500`;
       case "none":
-        return "border-gray-300";
+        return `${prop}-gray-300`;
       default:
-        return "border-gray-300";
+        return `${prop}-gray-300`;
     }
   };
   const n = 9;
@@ -65,6 +70,33 @@ export default function FormAccount(props: FormAccountInterface) {
     <div className="p-4 w-80 md:w-8/12 md:h-96 bg-white md:mt-16 rounded-2xl overflow-hidden">
       <div className="md:flex-row flex-col flex w-full">
         <div className="flex flex-col gap-4 w-full">
+          <div>
+            <label
+              htmlFor="namepage"
+              className="block mb-2 text-sm font-medium text-gray-900">
+              página:
+            </label>
+            <input
+              type="text"
+              id="namepage"
+              maxLength={15}
+              onChange={(e) => props.data.setPage(e.target.value)}
+              onBlur={handleCheckUser}
+              className={`${inputColor(
+                props.data.status?.pageStatus,
+                "border"
+              )} bg-gray-50  border  text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5`}
+              placeholder="/suapagina"
+              required
+            />
+            <p
+              className={`${inputColor(
+                props.data.status?.pageStatus,
+                "text"
+              )} text-sm`}>
+              {props.data.status.pageStatusMsg}
+            </p>
+          </div>
           <div>
             <label
               htmlFor="namepage"
@@ -80,25 +112,7 @@ export default function FormAccount(props: FormAccountInterface) {
               required
             />
           </div>
-          <div>
-            <label
-              htmlFor="namepage"
-              className="block mb-2 text-sm font-medium text-gray-900">
-              página:
-            </label>
-            <input
-              type="text"
-              id="namepage"
-              maxLength={15}
-              onChange={(e) => props.data.setPage(e.target.value)}
-              onBlur={handleCheckUser}
-              className={`${inputBorder(
-                props.data.status?.pageStatus
-              )} bg-gray-50  border  text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5`}
-              placeholder="/suapagina"
-              required
-            />
-          </div>
+
           <div>
             <label
               htmlFor="namepage"
