@@ -1,15 +1,18 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import {
-  AccountFormInterface,
-  SocialLinksType,
-} from "@/app/context/AccountFormContext";
+import { SocialLinksType } from "@/app/context/AccountFormContext";
 import SocialLinks from "./SocialLinks";
 
+export interface DataCardInterface {
+  page: string;
+  pixKey: string;
+  description: string;
+  socialLinks: SocialLinksType[];
+}
+
 interface CardBadgeInterface {
-  user: any;
-  data: AccountFormInterface;
+  user: { photoURL: string; username: string };
+  data: DataCardInterface;
 }
 
 type SocialLinksTypeName = SocialLinksType["name"];
@@ -114,8 +117,8 @@ export default function CardBadge(props: CardBadgeInterface) {
             priority
           />
           <div className="ml-2">
-            <p className="text-xl">{props.user?.displayName}</p>
-            {props.data.page.length > 0 ? (
+            <p className="text-xl">{props.user?.username}</p>
+            {props.data.page?.length > 0 ? (
               <p className="text text-gray-500">
                 <span className="text-primary-500">/</span>
                 {props.data?.page}
@@ -125,7 +128,7 @@ export default function CardBadge(props: CardBadgeInterface) {
             )}
           </div>
         </div>
-        {props.data.description.length > 0 ? (
+        {props.data.description?.length > 0 ? (
           <div className="flex w-full p-4">
             <p
               className="text-sm text-gray-500 font-normal break-words max-w-full"
@@ -142,7 +145,7 @@ export default function CardBadge(props: CardBadgeInterface) {
         )}
         <SocialLinks data={props.data} />
         <div className="w-full flex flex-col justify-center items-center gap-4">
-          {props.data.pixKey.length > 20 ? (
+          {props.data.pixKey?.length > 20 ? (
             <>
               <div>
                 <p>
