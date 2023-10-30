@@ -1,12 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import {
-  AccountFormInterface,
-  SocialLinksType,
-} from "@/app/context/AccountFormContext";
+import { SocialLinksType } from "@/app/context/AccountFormContext";
+import { DataCardInterface } from "./CardBadge";
 
 interface SocialLinksInterface {
-  data: AccountFormInterface;
+  data: DataCardInterface;
 }
 
 type SocialLinksTypeName = SocialLinksType["name"];
