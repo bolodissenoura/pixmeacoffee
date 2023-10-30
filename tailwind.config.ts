@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        hero: "url('/public/hero.jpg')",
+        bkg1: "url('/public/bkg1.svg')",
       },
       fontFamily: {
         primary: ["Mona-Sans"],
