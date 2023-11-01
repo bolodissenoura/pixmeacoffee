@@ -30,7 +30,10 @@ export default function Profile() {
   });
 
   React.useEffect(() => {
-    const q = query(usersCollection, where("namepage", "==", pathname));
+    const q = query(
+      usersCollection,
+      where("namepage", "==", pathname.slice(1))
+    );
     getDocs(q)
       .then((querySnapshot) => {
         if (querySnapshot.size === 0) {
