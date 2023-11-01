@@ -50,6 +50,26 @@ export default function FormAccount(props: FormAccountInterface) {
       });
     getDocs;
   };
+  React.useEffect(() => {
+    const q = query(usersCollection, where("id", "==", props.userId));
+    getDocs(q)
+      .then((querySnapshot) => {
+        if (querySnapshot.size === 0) {
+          console.log(props.userId);
+        } else {
+          querySnapshot.forEach((doc) => {
+            props.data.setDescription(doc.data().description);
+            props.data.setPage(doc.data().namepage);
+            props.data.setPixKey(doc.data().pixKey);
+            console.log("aqui", doc.data());
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar usuário:", error);
+      });
+    getDocs;
+  }, []);
   const inputColor = (
     data: "success" | "error" | "none",
     prop: "text" | "border"
@@ -80,7 +100,8 @@ export default function FormAccount(props: FormAccountInterface) {
               type="text"
               id="namepage"
               maxLength={15}
-              onChange={(e) => props.data.setPage(e.target.value)}
+              onChange={(e) => props.data.setPage(e.target.value.toLowerCase())}
+              value={props.data.page}
               onBlur={handleCheckUser}
               className={`${inputColor(
                 props.data.status?.pageStatus,
@@ -107,6 +128,7 @@ export default function FormAccount(props: FormAccountInterface) {
               type="text"
               id="namepage"
               onChange={(e) => props.data.setPixKey(e.target.value)}
+              value={props.data.pixKey}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
               placeholder="xxx-xxx-xxx-xxx..."
               required
@@ -129,7 +151,8 @@ export default function FormAccount(props: FormAccountInterface) {
             />
           </div>
         </div>
-        <div className="w-full flex flex-col gap-4">
+        <div className="w-full flex flex-col gap-2 mt-8 md:mt-0">
+          <p className="text-sm">Em breve ...</p>
           <div>
             <label
               htmlFor="namepage"
@@ -138,7 +161,8 @@ export default function FormAccount(props: FormAccountInterface) {
             </label>
             <input
               type="text"
-              id="namepage"
+              id="youtube"
+              disabled
               onChange={(e) => {
                 const newValue = e.target.value;
                 props.data?.setSocialLinks(() => [
@@ -148,19 +172,20 @@ export default function FormAccount(props: FormAccountInterface) {
                   { name: "tabnews", value: props.data.socialLinks[3]?.value },
                 ]);
               }}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
+              className="bg-gray-50 cursor-not-allowed border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
               placeholder=""
             />
           </div>
           <div>
             <label
-              htmlFor="namepage"
+              htmlFor="twitch"
               className="block mb-2 text-sm font-medium text-gray-900">
               twitch:
             </label>
             <input
               type="text"
-              id="namepage"
+              id="twitch"
+              disabled
               onChange={(e) => {
                 const newValue = e.target.value;
                 props.data?.setSocialLinks(() => [
@@ -170,7 +195,7 @@ export default function FormAccount(props: FormAccountInterface) {
                   { name: "tabnews", value: props.data.socialLinks[3]?.value },
                 ]);
               }}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
+              className="bg-gray-50 cursor-not-allowed border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
               placeholder=""
             />
           </div>
@@ -182,7 +207,8 @@ export default function FormAccount(props: FormAccountInterface) {
             </label>
             <input
               type="text"
-              id="namepage"
+              id="twitter"
+              disabled
               onChange={(e) => {
                 const newValue = e.target.value;
                 props.data?.setSocialLinks(() => [
@@ -192,7 +218,7 @@ export default function FormAccount(props: FormAccountInterface) {
                   { name: "tabnews", value: props.data.socialLinks[3]?.value },
                 ]);
               }}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
+              className="bg-gray-50 cursor-not-allowed border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
               placeholder=""
             />
           </div>
@@ -204,7 +230,8 @@ export default function FormAccount(props: FormAccountInterface) {
             </label>
             <input
               type="text"
-              id="namepage"
+              id="tabnews"
+              disabled
               onChange={(e) => {
                 const newValue = e.target.value;
                 props.data?.setSocialLinks(() => [
@@ -214,7 +241,7 @@ export default function FormAccount(props: FormAccountInterface) {
                   { name: "tabnews", value: newValue },
                 ]);
               }}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
+              className="bg-gray-50 cursor-not-allowed border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
               placeholder=""
             />
           </div>
