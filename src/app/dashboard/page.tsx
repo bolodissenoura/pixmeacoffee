@@ -10,8 +10,17 @@ import {
   AccountFormInterface,
 } from "../context/AccountFormContext";
 import PublishBtn from "@/components/PublishBtn";
-import { addDoc, collection } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { db } from "../firebase";
+import { toast } from "react-toastify";
 
 export default function Dashboard() {
   const { user, logOut } = UserAuth();
@@ -40,9 +49,6 @@ export default function Dashboard() {
     status,
     setStatus,
   };
-  // this initial data will come on GET from database
-  const [showButton, setShowButton] = React.useState<boolean>(false);
-  console.log(status?.pageStatus);
   const router = useRouter();
   React.useEffect(() => {
     if (user) {
@@ -53,8 +59,6 @@ export default function Dashboard() {
   }, [router, user]);
 
   if (!user) {
-    // user is signed out or still being checked.
-    // don't render anything
     return null;
   }
   const handleLogOut = async () => {
@@ -64,18 +68,39 @@ export default function Dashboard() {
       console.log(error);
     }
   };
-
-  const postRef = collection(db, "users");
-
   const handleSubmitForm = async () => {
-    await addDoc(postRef, {
-      description: data.description,
-      namepage: data.page,
-      pixKey: data.pixKey,
-      username: user?.displayName,
-      photoURL: user?.photoURL,
-      id: user?.uid,
-    });
+    const postRef = collection(db, "users");
+    const usersCollection = collection(db, "users");
+    const q = query(usersCollection, where("id", "==", user?.uid));
+
+    try {
+      const querySnapshot = await getDocs(q);
+
+      if (querySnapshot.size === 0) {
+        await addDoc(postRef, {
+          description: data.description,
+          namepage: data.page,
+          pixKey: data.pixKey,
+          username: user?.displayName,
+          photoURL: user?.photoURL,
+          id: user?.uid,
+        });
+      } else {
+        const getUser = doc(db, "users", user?.uid);
+        console.log("eu", user?.uid);
+        await updateDoc(getUser, {
+          description: data.description,
+          namepage: data.page,
+          pixKey: data.pixKey,
+        });
+      }
+
+      toast.success("🎉 Página atualizada com sucesso.");
+      router.push(`/${data.page}`);
+    } catch (error) {
+      console.error("Erro ao buscar usuário ou atualizar página:", error);
+      toast.error("Não foi possível cadastrar seus ajustes. Tente novamente.");
+    }
   };
 
   return (
