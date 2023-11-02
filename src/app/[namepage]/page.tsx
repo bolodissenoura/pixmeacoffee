@@ -64,10 +64,20 @@ export default function Profile() {
   return (
     <div className="bg-black h-screen w-full flex justify-center">
       {pageData.status === "success" ? (
-        <CardBadge
-          data={pageData?.data}
-          user={{ username: pageData?.username, photoURL: pageData?.photoURL }}
-        />
+        <div className="flex flex-col gap-8">
+          <CardBadge
+            data={pageData?.data}
+            user={{
+              username: pageData?.username,
+              photoURL: pageData?.photoURL,
+            }}
+          />
+          <Link href={"/login"}>
+            <div className="rounded-full bg-primary-500 py-2 md:px-4 px-2 text-white text-center">
+              Criar minha página
+            </div>
+          </Link>
+        </div>
       ) : (
         <></>
       )}

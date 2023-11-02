@@ -158,7 +158,7 @@ export default function CardBadge(props: CardBadgeInterface) {
               </div>
               <Image
                 src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${props.data.pixKey}`}
-                alt="Pix me a coffe escrito com coracoes azuis rodeando."
+                alt="Pix qr code."
                 width={250}
                 height={250}
                 priority
@@ -169,7 +169,7 @@ export default function CardBadge(props: CardBadgeInterface) {
               <Image
                 src={"/waiting.gif"}
                 className="rounded"
-                alt="Pix me a coffe escrito com coracoes azuis rodeando."
+                alt="Gif de garoto azul."
                 width={250}
                 height={250}
                 priority
