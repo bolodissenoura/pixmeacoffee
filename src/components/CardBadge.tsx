@@ -168,7 +168,7 @@ export default function CardBadge(props: CardBadgeInterface) {
             <>
               <Image
                 src={"/waiting.gif"}
-                className="rounded shadow"
+                className="rounded"
                 alt="Pix me a coffe escrito com coracoes azuis rodeando."
                 width={250}
                 height={250}
