@@ -17,6 +17,26 @@ export default function FormAccount(props: FormAccountInterface) {
   const db = getFirestore();
   const usernameToSearch = props.data.page;
   const usersCollection = collection(db, "users");
+  React.useEffect(() => {
+    const q = query(usersCollection, where("id", "==", props.userId));
+    getDocs(q)
+      .then((querySnapshot) => {
+        if (querySnapshot.size === 0) {
+          console.log(props.userId);
+        } else {
+          querySnapshot.forEach((doc) => {
+            props.data.setDescription(doc.data().description);
+            props.data.setPage(doc.data().namepage);
+            props.data.setPixKey(doc.data().pixKey);
+            console.log("aqui", doc.data());
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar usuário:", error);
+      });
+    getDocs;
+  }, []);
   const handleCheckUser = () => {
     const q = query(usersCollection, where("namepage", "==", usernameToSearch));
     getDocs(q)
@@ -50,26 +70,24 @@ export default function FormAccount(props: FormAccountInterface) {
       });
     getDocs;
   };
+
   React.useEffect(() => {
-    const q = query(usersCollection, where("id", "==", props.userId));
-    getDocs(q)
-      .then((querySnapshot) => {
-        if (querySnapshot.size === 0) {
-          console.log(props.userId);
-        } else {
-          querySnapshot.forEach((doc) => {
-            props.data.setDescription(doc.data().description);
-            props.data.setPage(doc.data().namepage);
-            props.data.setPixKey(doc.data().pixKey);
-            console.log("aqui", doc.data());
-          });
-        }
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar usuário:", error);
+    if (props.data.pixKey.length < 32) {
+      props.data.setStatus({
+        ...props.data.status,
+        pixKeyStatus: "error",
+        pixKeyStatusMsg:
+          "Uma chave pix aleatória deve ter ao menos 32 caracteres.",
       });
-    getDocs;
-  }, []);
+    } else {
+      props.data.setStatus({
+        ...props.data.status,
+        pixKeyStatus: "success",
+        pixKeyStatusMsg: "",
+      });
+    }
+  }, [props.data.pixKey]);
+
   const inputColor = (
     data: "success" | "error" | "none",
     prop: "text" | "border"
@@ -103,10 +121,17 @@ export default function FormAccount(props: FormAccountInterface) {
               onChange={(e) => props.data.setPage(e.target.value.toLowerCase())}
               value={props.data.page}
               onBlur={handleCheckUser}
-              className={`${inputColor(
+              onFocus={() => {
+                props.data?.setStatus({
+                  ...props.data?.status,
+                  pageStatus: "error",
+                  pageStatusMsg: "Toque em qualquer lugar fora deste campo para verificar.",
+                });
+              }}
+              className={`border border-solid ${inputColor(
                 props.data.status?.pageStatus,
                 "border"
-              )} bg-gray-50  border  text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5`}
+              )} bg-gray-50  text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5`}
               placeholder="/suapagina"
               required
             />
@@ -120,19 +145,29 @@ export default function FormAccount(props: FormAccountInterface) {
           </div>
           <div>
             <label
-              htmlFor="namepage"
+              htmlFor="pixkey"
               className="block mb-2 text-sm font-medium text-gray-900">
               chave aleatória pix:
             </label>
             <input
               type="text"
-              id="namepage"
+              id="pixkey"
               onChange={(e) => props.data.setPixKey(e.target.value)}
               value={props.data.pixKey}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
+              className={`bg-gray-50 border ${inputColor(
+                props.data.status?.pageStatus,
+                "border"
+              )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5`}
               placeholder="xxx-xxx-xxx-xxx..."
               required
             />
+            <p
+              className={`${inputColor(
+                props.data.status?.pageStatus,
+                "text"
+              )} text-sm`}>
+              {props.data.status.pixKeyStatusMsg}
+            </p>
           </div>
 
           <div>
