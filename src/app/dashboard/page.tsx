@@ -41,6 +41,7 @@ export default function Dashboard() {
     status,
     setStatus,
   };
+
   const router = useRouter();
   React.useEffect(() => {
     if (user) {
@@ -78,17 +79,20 @@ export default function Dashboard() {
     }
   };
 
+  const showButton =
+    status.pageStatus !== "error" && status.pixKeyStatus !== "error";
+
   return (
     <div className="bg-gray-300 w-full min-h-screen md:pb-10">
       <DashboardHeader user={user} handleLogOut={handleLogOut} />
-      <div className="flex flex-col items-center md:items-start md:flex-row gap-8 w-full md:px-40 pb-40 md:pb-0">
+      <div className="flex flex-col items-center md:items-start md:flex-row gap-8 w-fullwaiting md:px-40 pb-40 md:pb-0">
         <CardBadge
           data={data}
           user={{ username: user?.displayName, photoURL: user.photoURL }}
         />
         <FormAccount data={data} userId={user?.uid} />
         <PublishBtn
-          showButton={status?.pageStatus === "success"}
+          showButton={showButton}
           handleSubmitForm={handleSubmitForm}
         />
       </div>
