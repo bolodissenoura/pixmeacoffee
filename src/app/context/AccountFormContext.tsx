@@ -11,6 +11,7 @@ export type FormsStateType = {
   pageStatus: "success" | "error" | "none";
   pageStatusMsg: string;
   pixKeyStatus: "success" | "error" | "none";
+  pixKeyStatusMsg: string;
   socialLinksStatus: "success" | "error" | "none";
   descriptionStatus: "success" | "error" | "none";
 };
@@ -37,6 +38,7 @@ export function AccountFormProvider({ children }: any) {
     pageStatus: "none",
     pageStatusMsg: "",
     pixKeyStatus: "none",
+    pixKeyStatusMsg: "",
     socialLinksStatus: "none",
     descriptionStatus: "none",
   });
