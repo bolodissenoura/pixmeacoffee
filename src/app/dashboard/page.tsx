@@ -10,15 +10,7 @@ import {
   AccountFormInterface,
 } from "../context/AccountFormContext";
 import PublishBtn from "@/components/PublishBtn";
-import {
-  addDoc,
-  collection,
-  doc,
-  getDocs,
-  query,
-  updateDoc,
-  where,
-} from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { toast } from "react-toastify";
 
@@ -69,32 +61,15 @@ export default function Dashboard() {
     }
   };
   const handleSubmitForm = async () => {
-    const postRef = collection(db, "users");
-    const usersCollection = collection(db, "users");
-    const q = query(usersCollection, where("id", "==", user?.uid));
-
     try {
-      const querySnapshot = await getDocs(q);
-
-      if (querySnapshot.size === 0) {
-        await addDoc(postRef, {
-          description: data.description,
-          namepage: data.page,
-          pixKey: data.pixKey,
-          username: user?.displayName,
-          photoURL: user?.photoURL,
-          id: user?.uid,
-        });
-      } else {
-        const getUser = doc(db, "users", user?.uid);
-        console.log("eu", user?.uid);
-        await updateDoc(getUser, {
-          description: data.description,
-          namepage: data.page,
-          pixKey: data.pixKey,
-        });
-      }
-
+      await setDoc(doc(db, "users", user?.uid), {
+        description: data.description,
+        namepage: data.page,
+        pixKey: data.pixKey,
+        username: user?.displayName,
+        photoURL: user?.photoURL,
+        id: user?.uid,
+      });
       toast.success("🎉 Página atualizada com sucesso.");
       router.push(`/${data.page}`);
     } catch (error) {
