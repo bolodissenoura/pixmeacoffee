@@ -10,7 +10,7 @@
 
 ---
 ## 📍 Table of Contents
-- [👋 Introdcution](#-introdcution)
+- [👋 Introduction](#-introduction)
 - [🏎💨 Getting Started](#-getting-started)
   - [✅ Prerequisites](#-prerequisites)
   - [💻 Installation](#-installation)
@@ -18,11 +18,11 @@
 - [🤝 Contributing](#-contributing)
 
 - [📫 Contact](#-contact)
-- [🙏 Acknowledgments](#-acknowledgments)
+- [🙏 Acknowledgements](#-acknowledgements)
 
 ---
 
-## 👋 Introdcution
+## 👋 Introduction
 
 This repo serves as a central repository for all the project's code, documentation, and resources. It provides a collaborative platform for the project team to work together, share ideas, and contribute to the development of this critical project.
 
@@ -43,7 +43,7 @@ Before you begin, ensure that you have the following prerequisites installed:
 
 ### 💻 Installation
 
-1. Clone the freelaMed repository:
+1. Clone the pixmeacoffee repository:
 ```sh
 git clone https://github.com/bolodissenoura/pixmeacoffee
 ```
@@ -61,7 +61,7 @@ npm install
 4. Env:
 - Create a .env ( use the .env.example as a example ) and paste your OPENAI api key.
 
-### 🤖 Running freelaMed
+### 🤖 Running pixmeacoffee
 
 ```bash
 npm run dev
@@ -98,7 +98,7 @@ If you have any questions or concerns, please open an issue on GitHub or contact
 
 ---
 
-## 🙏 Acknowledgments
+## 🙏 Acknowledgements
 > `[📌  Every brazilian creator <3 ]`
 
 
