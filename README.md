@@ -26,11 +26,11 @@
 
 This repo serves as a central repository for all the project's code, documentation, and resources. It provides a collaborative platform for the project team to work together, share ideas, and contribute to the development of this critical project.
 
-Pix me a coffee is a Brazilian repository, made by brazilian for braz.. I guess u undertood.
+Pix me a coffee is a Brazilian repository, made by a brazilian for braz.. I guess u understood.
 
 Pix is a tech that provides fast transactions between brazilians, so why not make easier donations by default and incentivate your favorite brazilian creator.
 
-Wellcome to Pix me a coffee.
+Welcome to Pix me a coffee.
 
 <hr />
 
