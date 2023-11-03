@@ -24,12 +24,18 @@ export default function Home() {
               <span className="text-primary-500">seunome</span>
             </h2>
             <Link href={"/login"}>
-              <div className="rounded-full bg-primary-500 py-2 md:px-4 px-2 text-white">
-                Criar minha página
-              </div>
-            </Link>
+            <div className="rounded-full bg-primary-500 py-2 md:px-4 px-2 text-white hidden md:flex">
+              Criar minha página
+            </div>
+          </Link>
           </div>
+          <Link href={"/login"}>
+            <div className="rounded-full bg-primary-500 py-2 md:px-4 px-2 text-white md:hidden flex justify-center">
+              <p>Criar minha página</p>
+            </div>
+          </Link>
         </div>
+
         <Image
           src="/img-3.svg"
           alt="Exemplo de uso"
