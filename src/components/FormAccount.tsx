@@ -22,13 +22,12 @@ export default function FormAccount(props: FormAccountInterface) {
     getDocs(q)
       .then((querySnapshot) => {
         if (querySnapshot.size === 0) {
-          console.log(props.userId);
+          console.log("props.userId");
         } else {
           querySnapshot.forEach((doc) => {
             props.data.setDescription(doc.data().description);
             props.data.setPage(doc.data().namepage);
             props.data.setPixKey(doc.data().pixKey);
-            console.log("aqui", doc.data());
           });
         }
       })
