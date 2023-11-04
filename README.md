@@ -59,7 +59,7 @@ npm install
 ```
 
 4. Env:
-- Create a .env ( use the .env.example as a example ) and paste your OPENAI api key.
+- Create a .env ( use the .env.example as a example ) and fill in your Firebase config.
 
 ### 🤖 Running pixmeacoffee
 
