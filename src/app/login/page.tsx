@@ -44,13 +44,13 @@ export default function Login() {
                 />
               </div>
 
-              <p className="mt-3 font-bold text-xl">
+              {/* <p className="mt-3 font-bold text-xl">
                 Crie uma conta, <br /> comece a receber doações{" "}
                 <span className="text-primary-500">Pix</span>.
               </p>
               <p className="text-gray-500 mt-4">
                 Não perca tempo e dinheiro, <br /> entre com sua conta Google.
-              </p>
+              </p> */}
             </div>
             <button
               onClick={handleSignIn}

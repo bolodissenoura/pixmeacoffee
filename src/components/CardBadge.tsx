@@ -117,7 +117,7 @@ export default function CardBadge(props: CardBadgeInterface) {
             priority
           />
           <div className="ml-2">
-            <p className="text-xl">{props.user?.username}</p>
+            <p className="w-48 text-xl whitespace-nowrap text-ellipsis overflow-hidden">{props.user?.username}</p>
             {props.data.page?.length > 0 ? (
               <p className="text text-gray-500">
                 <span className="text-primary-500">/</span>
