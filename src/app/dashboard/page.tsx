@@ -91,7 +91,9 @@ export default function Dashboard() {
     status.pageStatus !== "error" && status.pixKeyStatus !== "error";
 
   return (
-    <div className="bg-gray-300 w-full min-h-screen md:pb-10">
+    <div
+      className="bg-primary-50 w-full min-h-screen md:pb-10"
+      style={{ backgroundImage: "url(wpp.svg)" }}>
       <DashboardHeader user={user} handleLogOut={handleLogOut} />
       <div className="flex flex-col items-center md:items-start md:flex-row gap-8 w-fullwaiting md:px-40 pb-40 md:pb-0">
         <CardBadge
