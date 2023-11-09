@@ -12,7 +12,7 @@ const config: Config = {
         bkg1: "url('/public/bkg1.svg')",
       },
       fontFamily: {
-        primary: ["Mona-Sans"],
+        primary: ["Manrope"],
         secondary: ['"Open Sans"'],
       },
       colors: {

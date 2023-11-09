@@ -1,5 +1,6 @@
 import React from "react";
 import { AccountFormInterface } from "@/app/context/AccountFormContext";
+import Image from "next/image";
 // @ts-ignore
 import { payload } from "pix-payload";
 import {
@@ -14,6 +15,8 @@ import Accordion from "./Accordion";
 interface FormAccountInterface {
   data: AccountFormInterface;
   userId: string;
+  handleSubmitForm: () => void;
+  enableButton: boolean;
 }
 
 export default function FormAccount(props: FormAccountInterface) {
@@ -134,16 +137,15 @@ export default function FormAccount(props: FormAccountInterface) {
   const myPayload = payload(data);
   console.log(myPayload);
   return (
-    <div className="p-4 w-80 md:w-8/12 bg-white md:mt-16 rounded-2xl overflow-hidden">
+    <div className="p-4 bg-white md:mt-16 rounded-2xl overflow-hidden">
       <div className="md:flex-row flex-col flex w-full">
         <div className="flex flex-col gap-4 w-full">
-          <p className="text-sm">Personalize sua página</p>
+          <p className="font-normal w-10/12">
+            Crie seu primeiro{" "}
+            <span className="text-primary-500 bold">cartão virtual</span>{" "}
+            gratuitamente
+          </p>
           <div>
-            <label
-              htmlFor="namepage"
-              className="block mb-2 text-sm font-medium text-gray-900">
-              página:
-            </label>
             <input
               type="text"
               id="namepage"
@@ -155,8 +157,7 @@ export default function FormAccount(props: FormAccountInterface) {
                 props.data?.setStatus({
                   ...props.data?.status,
                   pageStatus: "error",
-                  pageStatusMsg:
-                    "Toque em qualquer lugar fora deste campo para verificar.",
+                  pageStatusMsg: "Saia do campo para verificar.",
                 });
               }}
               className={`border border-solid ${inputColor(
@@ -170,108 +171,208 @@ export default function FormAccount(props: FormAccountInterface) {
               className={`${inputColor(
                 props.data.status?.pageStatus,
                 "text"
-              )} text-sm`}>
+              )} text-sm mt-2`}>
               {props.data.status.pageStatusMsg}
             </p>
           </div>
           <div>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                id="pixkey"
+                onChange={(e) => props.data.setPixKey(e.target.value)}
+                value={props.data.pixKey}
+                className={`bg-gray-50 p-4 border ${inputColor(
+                  props.data.status?.pageStatus,
+                  "border"
+                )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-8/12 p-2.5`}
+                placeholder="Chave pix aleatória"
+                required
+              />
+              <button
+                onClick={pasteFromClipboard}
+                className="border rounded border-gray-300 p-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="#000000"
+                  viewBox="0 0 256 256">
+                  <path d="M200,32H163.74a47.92,47.92,0,0,0-71.48,0H56A16,16,0,0,0,40,48V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm-72,0a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32Zm72,184H56V48H82.75A47.93,47.93,0,0,0,80,64v8a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V64a47.93,47.93,0,0,0-2.75-16H200Z"></path>
+                </svg>
+              </button>
+            </div>
             <p
               className={`${inputColor(
                 props.data.status?.pageStatus,
                 "text"
-              )} text-sm`}>
+              )} text-sm w-10/12`}>
               {props.data.status.pixKeyStatusMsg}
             </p>
           </div>
+          <input
+            type="text"
+            id="city"
+            onChange={(e) => props.data.setCity(e.target.value)}
+            value={props.data.city}
+            className={`bg-gray-50 p-4 border ${inputColor(
+              props.data.status?.pageStatus,
+              "border"
+            )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5`}
+            placeholder="Sua cidade"
+            required
+          />
+          <input
+            type="text"
+            id="name"
+            onChange={(e) => props.data.setName(e.target.value)}
+            value={props.data.name}
+            className={`bg-gray-50  p-4 border ${inputColor(
+              props.data.status?.pageStatus,
+              "border"
+            )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5`}
+            placeholder="Seu nome completo"
+            required
+          />
 
-          <div>
-            <label
-              htmlFor="namepage"
-              className="block mb-2 text-sm font-medium text-gray-900">
-              descrição:
-            </label>
-            <textarea
-              onChange={(e) => props.data.setDescription(e.target.value)}
-              value={props.data.description}
-              rows={5}
-              maxLength={150}
-              className="bg-gray-50 resize-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
-              placeholder="Um pouco sobre você..."
-            />
-          </div>
+          <textarea
+            onChange={(e) => props.data.setDescription(e.target.value)}
+            value={props.data.description}
+            rows={3}
+            maxLength={150}
+            className="bg-gray-50 resize-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5"
+            placeholder="Descrição"
+          />
         </div>
         <div className="w-full flex flex-col gap-2 mt-8 md:mt-0">
-          <p className="text-sm">Área Pix</p>
-          <label
-            htmlFor="pixkey"
-            className="block mb-2 text-sm font-medium text-gray-900">
-            chave aleatória pix:
-          </label>
+          <p className="font-normal w-10/12">
+            Você também pode incluir suas redes sociais no seu cartão
+          </p>
           <div className="flex gap-2">
+            <Image
+              src="/social/instagram.svg"
+              alt="Social media icone"
+              width={32}
+              height={32}
+            />
             <input
               type="text"
               id="pixkey"
               onChange={(e) => props.data.setPixKey(e.target.value)}
               value={props.data.pixKey}
-              className={`bg-gray-50 border ${inputColor(
+              className={`bg-gray-50 p-4 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"
               )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-8/12 p-2.5`}
-              placeholder="xxx-xxx-xxx-xxx..."
-              required
-            />
-            <button
-              onClick={pasteFromClipboard}
-              className="border rounded border-gray-300 p-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="#000000"
-                viewBox="0 0 256 256">
-                <path d="M200,32H163.74a47.92,47.92,0,0,0-71.48,0H56A16,16,0,0,0,40,48V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm-72,0a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32Zm72,184H56V48H82.75A47.93,47.93,0,0,0,80,64v8a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V64a47.93,47.93,0,0,0-2.75-16H200Z"></path>
-              </svg>
-            </button>
-          </div>
-          <div className="flex gap-2">
-            <input
-              type="text"
-              id="name"
-              onChange={(e) => props.data.setName(e.target.value)}
-              value={props.data.name}
-              className={`bg-gray-50 border ${inputColor(
-                props.data.status?.pageStatus,
-                "border"
-              )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-8/12 p-2.5`}
-              placeholder="Seu nome completo"
-              required
+              placeholder="@seuarroba"
             />
           </div>
           <div className="flex gap-2">
+            <Image
+              src="/social/zap.svg"
+              alt="Social media icone"
+              width={32}
+              height={32}
+            />
             <input
               type="text"
-              id="city"
-              onChange={(e) => props.data.setCity(e.target.value)}
-              value={props.data.city}
-              className={`bg-gray-50 border ${inputColor(
+              id="pixkey"
+              onChange={(e) => props.data.setPixKey(e.target.value)}
+              value={props.data.pixKey}
+              className={`bg-gray-50 p-4 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"
               )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-8/12 p-2.5`}
-              placeholder="Sua cidade"
-              required
+              placeholder="@seuarroba"
             />
           </div>
-        </div>
-        <div
-          className="w-full md:w-2/12 md:flex md:flex-col gap-4 hidden"
-          style={{ marginTop: "-30px" }}>
-          {[...Array(n)].map((e, i) => (
-            <div
-              key={i}
-              className="bg-gray-300 w-8 h-8 rounded-full shadow-inner"></div>
-          ))}
+          <div className="flex gap-2">
+            <Image
+              src="/social/linkedin.svg"
+              alt="Social media icone"
+              width={32}
+              height={32}
+            />
+            <input
+              type="text"
+              id="pixkey"
+              onChange={(e) => props.data.setPixKey(e.target.value)}
+              value={props.data.pixKey}
+              className={`bg-gray-50 p-4 border ${inputColor(
+                props.data.status?.pageStatus,
+                "border"
+              )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-8/12 p-2.5`}
+              placeholder="@seuarroba"
+            />
+          </div>
+          <div className="flex gap-2">
+            <Image
+              src="/social/x.svg"
+              alt="Social media icone"
+              width={32}
+              height={32}
+            />
+            <input
+              type="text"
+              id="pixkey"
+              onChange={(e) => props.data.setPixKey(e.target.value)}
+              value={props.data.pixKey}
+              className={`bg-gray-50 p-4 border ${inputColor(
+                props.data.status?.pageStatus,
+                "border"
+              )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-8/12 p-2.5`}
+              placeholder="@seuarroba"
+            />
+          </div>
+          <div className="flex gap-2">
+            <Image
+              src="/social/twitch.svg"
+              alt="Social media icone"
+              width={32}
+              height={32}
+            />
+            <input
+              type="text"
+              id="pixkey"
+              onChange={(e) => props.data.setPixKey(e.target.value)}
+              value={props.data.pixKey}
+              className={`bg-gray-50 p-4 border ${inputColor(
+                props.data.status?.pageStatus,
+                "border"
+              )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-8/12 p-2.5`}
+              placeholder="@seuarroba"
+            />
+          </div>
+          <div className="flex gap-2">
+            <Image
+              src="/social/sig.svg"
+              alt="Social media icone"
+              width={32}
+              height={32}
+            />
+            <input
+              type="text"
+              id="pixkey"
+              onChange={(e) => props.data.setPixKey(e.target.value)}
+              value={props.data.pixKey}
+              className={`bg-gray-50 p-4 border ${inputColor(
+                props.data.status?.pageStatus,
+                "border"
+              )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-8/12 p-2.5`}
+              placeholder="@seuarroba"
+            />
+          </div>
         </div>
       </div>
+      <button
+        type="submit"
+        onClick={props.handleSubmitForm}
+        disabled={!props.enableButton}
+        className={`w-full p-4 text-white bold rounded-lg mt-4 ${
+          props.enableButton ? "bg-primary-500" : "bg-primary-200"
+        }`}>
+        Finalizar cadastro
+      </button>
     </div>
   );
 }

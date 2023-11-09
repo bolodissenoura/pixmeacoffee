@@ -5,7 +5,6 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      {" "}
       <NavBar />
       <main className="flex min-h-screen items-center flex-col md:flex-row px-4 w-full gap-20 max-w-[1200px] mx-auto">
         <div className="md:w-6/12 lg:w-6/12 gap-8 flex flex-col mt-24 md:mt-0 lg:mt-0">
@@ -24,10 +23,10 @@ export default function Home() {
               <span className="text-primary-500">seunome</span>
             </h2>
             <Link href={"/login"}>
-            <div className="rounded-full bg-primary-500 py-2 md:px-4 px-2 text-white hidden md:flex">
-              Criar minha página
-            </div>
-          </Link>
+              <div className="rounded-full bg-primary-500 py-2 md:px-4 px-2 text-white hidden md:flex">
+                Criar minha página
+              </div>
+            </Link>
           </div>
           <Link href={"/login"}>
             <div className="rounded-full bg-primary-500 py-2 md:px-4 px-2 text-white md:hidden flex justify-center">

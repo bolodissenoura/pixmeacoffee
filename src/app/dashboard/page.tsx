@@ -9,13 +9,13 @@ import {
   AccountForm,
   AccountFormInterface,
 } from "../context/AccountFormContext";
-import PublishBtn from "@/components/PublishBtn";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { toast } from "react-toastify";
 
 export default function Dashboard() {
   const { user, logOut } = UserAuth();
+  // I'm not proud of this logic here, but is what we got for MVP :)
   const {
     description,
     setDescription,
@@ -27,6 +27,10 @@ export default function Dashboard() {
     setSocialLinks,
     status,
     setStatus,
+    setCity,
+    city,
+    setName,
+    name,
   } = AccountForm();
 
   const data: AccountFormInterface = {
@@ -40,6 +44,10 @@ export default function Dashboard() {
     setSocialLinks,
     status,
     setStatus,
+    setCity,
+    city,
+    setName,
+    name,
   };
 
   const router = useRouter();
@@ -79,7 +87,7 @@ export default function Dashboard() {
     }
   };
 
-  const showButton =
+  const enableButton =
     status.pageStatus !== "error" && status.pixKeyStatus !== "error";
 
   return (
@@ -90,10 +98,11 @@ export default function Dashboard() {
           data={data}
           user={{ username: user?.displayName, photoURL: user.photoURL }}
         />
-        <FormAccount data={data} userId={user?.uid} />
-        <PublishBtn
-          showButton={showButton}
+        <FormAccount
+          enableButton={enableButton}
           handleSubmitForm={handleSubmitForm}
+          data={data}
+          userId={user?.uid}
         />
       </div>
     </div>
