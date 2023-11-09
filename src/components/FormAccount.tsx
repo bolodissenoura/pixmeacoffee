@@ -233,41 +233,31 @@ export default function FormAccount(props: FormAccountInterface) {
               </svg>
             </button>
           </div>
-          <label
-            htmlFor="pixkey"
-            className="block mb-2 text-sm font-medium text-gray-900">
-            Nome completo:
-          </label>
           <div className="flex gap-2">
             <input
               type="text"
-              id="pixkey"
-              onChange={(e) => props.data.setPixKey(e.target.value)}
-              value={props.data.pixKey}
+              id="name"
+              onChange={(e) => props.data.setName(e.target.value)}
+              value={props.data.name}
               className={`bg-gray-50 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"
               )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-8/12 p-2.5`}
-              placeholder="xxx-xxx-xxx-xxx..."
+              placeholder="Seu nome completo"
               required
             />
           </div>
-          <label
-            htmlFor="pixkey"
-            className="block mb-2 text-sm font-medium text-gray-900">
-            Cidade:
-          </label>
           <div className="flex gap-2">
             <input
               type="text"
-              id="pixkey"
-              onChange={(e) => props.data.setPixKey(e.target.value)}
-              value={props.data.pixKey}
+              id="city"
+              onChange={(e) => props.data.setCity(e.target.value)}
+              value={props.data.city}
               className={`bg-gray-50 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"
               )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-8/12 p-2.5`}
-              placeholder="xxx-xxx-xxx-xxx..."
+              placeholder="Sua cidade"
               required
             />
           </div>

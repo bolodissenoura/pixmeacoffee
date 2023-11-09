@@ -23,6 +23,10 @@ export interface AccountFormInterface {
   setPage: React.Dispatch<React.SetStateAction<string>>;
   pixKey: string;
   setPixKey: React.Dispatch<React.SetStateAction<string>>;
+  name: string;
+  setName: React.Dispatch<React.SetStateAction<string>>;
+  city: string;
+  setCity: React.Dispatch<React.SetStateAction<string>>;
   socialLinks: SocialLinksType[];
   setSocialLinks: React.Dispatch<React.SetStateAction<SocialLinksType[]>>;
   status: FormsStateType;
@@ -33,6 +37,8 @@ export function AccountFormProvider({ children }: any) {
   const [description, setDescription] = React.useState<string>("");
   const [page, setPage] = React.useState<string>("");
   const [pixKey, setPixKey] = React.useState<string>("");
+  const [name, setName] = React.useState<string>("");
+  const [city, setCity] = React.useState<string>("");
   const [socialLinks, setSocialLinks] = React.useState<SocialLinksType[]>([]);
   const [status, setStatus] = React.useState<FormsStateType>({
     pageStatus: "none",
@@ -56,6 +62,10 @@ export function AccountFormProvider({ children }: any) {
         setSocialLinks,
         setStatus,
         status,
+        setName,
+        name,
+        setCity,
+        city,
       }}>
       {children}
     </AccountFormContext.Provider>
