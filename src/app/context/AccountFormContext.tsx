@@ -27,6 +27,8 @@ export interface AccountFormInterface {
   setPage: React.Dispatch<React.SetStateAction<string>>;
   pixKey: string;
   setPixKey: React.Dispatch<React.SetStateAction<string>>;
+  qrCode: string;
+  setQrCode: React.Dispatch<React.SetStateAction<string>>;
   name: string;
   setName: React.Dispatch<React.SetStateAction<string>>;
   city: string;
@@ -41,6 +43,7 @@ export function AccountFormProvider({ children }: any) {
   const [description, setDescription] = React.useState<string>("");
   const [page, setPage] = React.useState<string>("");
   const [pixKey, setPixKey] = React.useState<string>("");
+  const [qrCode, setQrCode] = React.useState<string>("");
   const [name, setName] = React.useState<string>("");
   const [city, setCity] = React.useState<string>("");
   const [socialLinks, setSocialLinks] = React.useState<SocialLinksType>({
@@ -69,6 +72,8 @@ export function AccountFormProvider({ children }: any) {
         setPage,
         pixKey,
         setPixKey,
+        qrCode,
+        setQrCode,
         socialLinks,
         setSocialLinks,
         setStatus,

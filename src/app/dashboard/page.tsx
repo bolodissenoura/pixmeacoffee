@@ -25,6 +25,8 @@ export default function Dashboard() {
     setPage,
     pixKey,
     setPixKey,
+    qrCode,
+    setQrCode,
     socialLinks,
     setSocialLinks,
     status,
@@ -42,6 +44,8 @@ export default function Dashboard() {
     setPage,
     pixKey,
     setPixKey,
+    qrCode,
+    setQrCode,
     socialLinks,
     setSocialLinks,
     status,
@@ -77,6 +81,7 @@ export default function Dashboard() {
         description: data.description,
         namepage: data.page,
         pixKey: data.pixKey,
+        qrCode: data.qrCode,
         username: user?.displayName,
         photoURL: user?.photoURL,
         city: data.city,
@@ -99,8 +104,7 @@ export default function Dashboard() {
     }
   };
 
-  const enableButton =
-    status.pageStatus !== "error" && status.pixKeyStatus !== "error";
+  const enableButton = status.pageStatus !== "error";
 
   return (
     <div
@@ -111,7 +115,7 @@ export default function Dashboard() {
         <Image
           src={"cordinha.svg"}
           alt="Foto do usuario"
-          className="absolute top-2 left-20 md:left-80 "
+          className="absolute top-2 left-20 md:left-60 "
           width={300}
           height={300}
           priority

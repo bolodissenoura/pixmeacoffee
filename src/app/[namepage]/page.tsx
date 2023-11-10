@@ -22,6 +22,7 @@ export default function Profile() {
     data: {
       page: "",
       pixKey: "",
+      qrCode: "",
       description: "",
       socialLinks: {
         instagram: "",
@@ -53,6 +54,7 @@ export default function Profile() {
               data: {
                 page: doc.data().namepage,
                 pixKey: doc.data().pixKey,
+                qrCode: doc.data().qrCode,
                 description: doc.data().description,
                 socialLinks: doc.data().socialLinks,
               },
@@ -81,11 +83,11 @@ export default function Profile() {
               photoURL: pageData?.photoURL,
             }}
           />
-          <Link href={"/login"}>
+          {/* <Link href={"/login"}>
             <div className="rounded-full bg-primary-500 py-2 md:px-4 px-2 text-white text-center">
-              Criar minha página
+              Criar minha página 100% grátis
             </div>
-          </Link>
+          </Link> */}
         </div>
       ) : (
         <></>
@@ -108,7 +110,7 @@ export default function Profile() {
 
             <Link href={"/login"}>
               <div className="rounded-full bg-primary-500 py-2 md:px-4 px-2 text-white">
-                Criar minha página
+                Criar minha página 100% grátis
               </div>
             </Link>
           </div>

@@ -12,7 +12,6 @@
     "encoding": "^0.1.13",
     "firebase": "^10.4.0",
     "next": "latest",
-    "pix-payload": "^1.0.4",
     "react": "latest",
     "react-dom": "latest",
     "react-toastify": "^9.1.3"

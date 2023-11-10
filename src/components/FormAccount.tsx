@@ -1,8 +1,6 @@
 import React from "react";
 import { AccountFormInterface } from "@/app/context/AccountFormContext";
 import Image from "next/image";
-// @ts-ignore
-import { payload } from "pix-payload";
 import {
   getFirestore,
   collection,
@@ -10,7 +8,6 @@ import {
   where,
   getDocs,
 } from "firebase/firestore";
-import Accordion from "./Accordion";
 
 interface FormAccountInterface {
   data: AccountFormInterface;
@@ -19,11 +16,16 @@ interface FormAccountInterface {
   enableButton: boolean;
 }
 
+interface Objeto {
+  ID: string;
+  Nome: string;
+  Estado: string;
+}
+
 export default function FormAccount(props: FormAccountInterface) {
   const db = getFirestore();
   const usernameToSearch = props.data.page;
   const usersCollection = collection(db, "users");
-  const [pixKeyNotDefault, setPixKeyNotDefault] = React.useState(false);
   React.useEffect(() => {
     const q = query(usersCollection, where("id", "==", props.userId));
     getDocs(q)
@@ -35,6 +37,8 @@ export default function FormAccount(props: FormAccountInterface) {
             props.data.setDescription(doc.data().description);
             props.data.setPage(doc.data().namepage);
             props.data.setPixKey(doc.data().pixKey);
+            props.data.setQrCode(doc.data().qrCode);
+            props.data.setSocialLinks(doc.data().socialLinks);
           });
         }
       })
@@ -83,7 +87,7 @@ export default function FormAccount(props: FormAccountInterface) {
         ...props.data.status,
         pixKeyStatus: "error",
         pixKeyStatusMsg:
-          "Uma chave pix aleatória deve ter ao menos 32 caracteres.",
+          "Um QR-Code pix deve começar com 00, mas se quiser colar outro qr-code, sem problemas.",
       });
     } else {
       props.data.setStatus({
@@ -110,7 +114,7 @@ export default function FormAccount(props: FormAccountInterface) {
     }
   };
   const n = 9;
-  const pasteFromClipboard = () => {
+  const pasteFromClipboardPix = () => {
     navigator.clipboard
       .readText()
       .then((text) => {
@@ -120,22 +124,17 @@ export default function FormAccount(props: FormAccountInterface) {
         console.error("Failed to read clipboard contents: ", err);
       });
   };
-
-  React.useEffect(() => {
-    if (props.data.pixKey.slice(0, 3) !== "000") {
-      setPixKeyNotDefault(true);
-    }
-  }, [props.data.pixKey]);
-  const data = {
-    key: "devcarlosalberto@gmail.com",
-    name: "Carlos Alberto",
-    city: "Praia Grande",
-    amount: 150,
-    transactionId: "PAY123",
+  const pasteFromClipboardQrCode = () => {
+    navigator.clipboard
+      .readText()
+      .then((text) => {
+        props.data.setQrCode(text);
+      })
+      .catch((err) => {
+        console.error("Failed to read clipboard contents: ", err);
+      });
   };
 
-  const myPayload = payload(data);
-  console.log(myPayload);
   return (
     <div className="p-4 bg-white md:mt-16 rounded-2xl overflow-hidden">
       <div className="md:flex-row flex-col flex w-full">
@@ -179,18 +178,18 @@ export default function FormAccount(props: FormAccountInterface) {
             <div className="flex gap-2">
               <input
                 type="text"
-                id="pixkey"
-                onChange={(e) => props.data.setPixKey(e.target.value)}
-                value={props.data.pixKey}
+                id="qrCode"
+                onChange={(e) => props.data.setQrCode(e.target.value)}
+                value={props.data.qrCode}
                 className={`bg-gray-50 p-4 border ${inputColor(
                   props.data.status?.pageStatus,
                   "border"
                 )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-8/12 p-2.5`}
-                placeholder="Chave pix aleatória"
+                placeholder="Chave QR-CODE"
                 required
               />
               <button
-                onClick={pasteFromClipboard}
+                onClick={pasteFromClipboardQrCode}
                 className="border rounded border-gray-300 p-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -210,31 +209,32 @@ export default function FormAccount(props: FormAccountInterface) {
               {props.data.status.pixKeyStatusMsg}
             </p>
           </div>
-          <input
-            type="text"
-            id="city"
-            onChange={(e) => props.data.setCity(e.target.value)}
-            value={props.data.city}
-            className={`bg-gray-50 p-4 border ${inputColor(
-              props.data.status?.pageStatus,
-              "border"
-            )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5`}
-            placeholder="Sua cidade"
-            required
-          />
-          <input
-            type="text"
-            id="name"
-            onChange={(e) => props.data.setName(e.target.value)}
-            value={props.data.name}
-            className={`bg-gray-50  p-4 border ${inputColor(
-              props.data.status?.pageStatus,
-              "border"
-            )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-10/12 p-2.5`}
-            placeholder="Seu nome completo"
-            required
-          />
-
+          <div className="flex gap-2">
+            <input
+              type="text"
+              id="pixkey"
+              onChange={(e) => props.data.setPixKey(e.target.value)}
+              value={props.data.pixKey}
+              className={`bg-gray-50 p-4 border ${inputColor(
+                props.data.status?.pageStatus,
+                "border"
+              )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-8/12 p-2.5`}
+              placeholder="Chave pix"
+              required
+            />
+            <button
+              onClick={pasteFromClipboardPix}
+              className="border rounded border-gray-300 p-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="#000000"
+                viewBox="0 0 256 256">
+                <path d="M200,32H163.74a47.92,47.92,0,0,0-71.48,0H56A16,16,0,0,0,40,48V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm-72,0a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32Zm72,184H56V48H82.75A47.93,47.93,0,0,0,80,64v8a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V64a47.93,47.93,0,0,0-2.75-16H200Z"></path>
+              </svg>
+            </button>
+          </div>
           <textarea
             onChange={(e) => props.data.setDescription(e.target.value)}
             value={props.data.description}
