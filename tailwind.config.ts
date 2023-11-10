@@ -42,6 +42,7 @@ const config: Config = {
         },
         badge: "#F1F5F9",
         badgeText: "#475569",
+        textGray: "#848199",
       },
       fontSize: {
         h1: [

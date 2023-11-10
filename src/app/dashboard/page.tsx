@@ -14,6 +14,7 @@ import {
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { toast } from "react-toastify";
+import PremiumCard from "@/components/PremiumCard";
 
 export default function Dashboard() {
   const { user, logOut } = UserAuth();
@@ -125,12 +126,15 @@ export default function Dashboard() {
           data={data}
           user={{ username: user?.displayName, photoURL: user.photoURL }}
         />
-        <FormAccount
-          enableButton={enableButton}
-          handleSubmitForm={handleSubmitForm}
-          data={data}
-          userId={user?.uid}
-        />
+        <div className="flex flex-col md:mt-16">
+          <FormAccount
+            enableButton={enableButton}
+            handleSubmitForm={handleSubmitForm}
+            data={data}
+            userId={user?.uid}
+          />
+          <PremiumCard />
+        </div>
       </div>
     </div>
   );

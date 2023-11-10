@@ -136,7 +136,7 @@ export default function FormAccount(props: FormAccountInterface) {
   };
 
   return (
-    <div className="p-4 bg-white md:mt-16 rounded-2xl overflow-hidden">
+    <div className="p-4 bg-white rounded-t-2xl shadow-lg overflow-hidden">
       <div className="md:flex-row flex-col flex w-full">
         <div className="flex flex-col gap-4 w-full">
           <p className="font-normal w-10/12">
