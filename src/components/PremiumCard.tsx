@@ -4,16 +4,12 @@ import Link from "next/link";
 
 export default function PremiumCard() {
   return (
-    <div className="bg-primary-100 w-full rounded-b-lg h-40 flex justify-center items-center">
+    <div className="bg-primary-100 py-6 w-full rounded-b-lg md:flex-row flex flex-col justify-center items-center">
       <ul className="w-6/12">
         <h3 className="text-primary-500 text-lg">Coffee premium</h3>
         <li className="flex gap-2 text-textGray">
           <Image src={"check.svg"} alt="coffee" width={16} height={16} />
           <p>Crie cartões ilimitados</p>
-        </li>
-        <li className="flex gap-2 text-textGray">
-          <Image src={"check.svg"} alt="coffee" width={16} height={16} />
-          <p>Links personalizados</p>
         </li>
         <li className="flex gap-2 text-textGray">
           <Image src={"check.svg"} alt="coffee" width={16} height={16} />
@@ -25,7 +21,7 @@ export default function PremiumCard() {
         </li>
         <li className="flex gap-2 text-textGray">
           <Image src={"check.svg"} alt="coffee" width={16} height={16} />
-          <p>Entre outros</p>
+          <p>Entre outras vantagens ☕️</p>
         </li>
       </ul>
       <div className="flex flex-col">
