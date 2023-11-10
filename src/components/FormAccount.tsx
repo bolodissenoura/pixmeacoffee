@@ -264,7 +264,7 @@ export default function FormAccount(props: FormAccountInterface) {
                   instagram: e.target.value,
                 })
               }
-              value={props.data.socialLinks.instagram}
+              value={props.data.socialLinks?.instagram}
               className={`bg-gray-50 p-4 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"

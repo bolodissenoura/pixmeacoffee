@@ -14,7 +14,7 @@ export default function SocialLinks(props: SocialLinksInterface) {
         {props.data.instagram ? (
           <>
             <Link
-              href={`https://www.instagram.com/${props.data.instagram}`}
+              href={`https://www.instagram.com/${props.data?.instagram}`}
               target="_blank">
               <Image
                 src={"/social/instagram.svg"}
@@ -31,7 +31,7 @@ export default function SocialLinks(props: SocialLinksInterface) {
         {props.data.zap ? (
           <>
             <Link
-              href={`https://api.whatsapp.com/send?phone=${props.data.zap}`}
+              href={`https://api.whatsapp.com/send?phone=${props.data?.zap}`}
               target="_blank">
               <Image
                 src={"/social/zap.svg"}
@@ -45,10 +45,10 @@ export default function SocialLinks(props: SocialLinksInterface) {
         ) : (
           <></>
         )}
-        {props.data.linkedin ? (
+        {props.data?.linkedin ? (
           <>
             <Link
-              href={`https://www.linkedin.com/in/${props.data.linkedin}`}
+              href={`https://www.linkedin.com/in/${props.data?.linkedin}`}
               target="_blank">
               <Image
                 src={"/social/linkedin.svg"}
@@ -62,10 +62,10 @@ export default function SocialLinks(props: SocialLinksInterface) {
         ) : (
           <></>
         )}
-        {props.data.x ? (
+        {props.data?.x ? (
           <>
             <Link
-              href={`https://x.com/${props.data.x}`}
+              href={`https://x.com/${props.data?.x}`}
               target="_blank">
               <Image
                 src={"/social/x.svg"}
@@ -79,10 +79,10 @@ export default function SocialLinks(props: SocialLinksInterface) {
         ) : (
           <></>
         )}
-        {props.data.twitch ? (
+        {props.data?.twitch ? (
           <>
             <Link
-              href={`https://www.twitch.tv/${props.data.twitch}`}
+              href={`https://www.twitch.tv/${props.data?.twitch}`}
               target="_blank">
               <Image
                 src={"/social/twitch.svg"}
@@ -96,10 +96,10 @@ export default function SocialLinks(props: SocialLinksInterface) {
         ) : (
           <></>
         )}
-        {props.data.sig ? (
+        {props.data?.sig ? (
           <>
             <Link
-              href={`https://biome.sigcoding.com/${props.data.sig}`}
+              href={`https://biome.sigcoding.com/${props.data?.sig}`}
               target="_blank">
               <Image
                 src={"/social/sig.svg"}

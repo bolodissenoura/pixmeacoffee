@@ -88,12 +88,12 @@ export default function Dashboard() {
         city: data.city,
         name: data.name,
         socialLinks: {
-          instagram: data.socialLinks.instagram,
-          zap: data.socialLinks.zap,
-          linkedin: data.socialLinks.linkedin,
-          x: data.socialLinks.x,
-          twitch: data.socialLinks.twitch,
-          sig: data.socialLinks.sig,
+          instagram: data.socialLinks?.instagram,
+          zap: data.socialLinks?.zap,
+          linkedin: data.socialLinks?.linkedin,
+          x: data.socialLinks?.x,
+          twitch: data.socialLinks?.twitch,
+          sig: data.socialLinks?.sig,
         },
         id: user?.uid,
       });
