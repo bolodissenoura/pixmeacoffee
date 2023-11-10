@@ -11,7 +11,7 @@ export default function SocialLinks(props: SocialLinksInterface) {
   return (
     <>
       <div className="flex gap-8 w-full justify-center">
-        {props.data.instagram ? (
+        {props.data?.instagram ? (
           <>
             <Link
               href={`https://www.instagram.com/${props.data?.instagram}`}
@@ -28,7 +28,7 @@ export default function SocialLinks(props: SocialLinksInterface) {
         ) : (
           <></>
         )}
-        {props.data.zap ? (
+        {props.data?.zap ? (
           <>
             <Link
               href={`https://api.whatsapp.com/send?phone=${props.data?.zap}`}
