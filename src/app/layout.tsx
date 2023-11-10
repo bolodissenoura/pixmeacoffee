@@ -1,15 +1,15 @@
 "use client";
 import "./globals.css";
-import { Lato } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { AuthContextProvider } from "./context/AuthContext";
 import React from "react";
 import { AccountFormProvider } from "./context/AccountFormContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const inter = Lato({
+const manrope = Manrope({
   subsets: ["latin"],
-  weight: "700",
+  weight: "300",
 });
 
 export default function RootLayout({
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={manrope.className}>
         <AuthContextProvider>
           <AccountFormProvider>{children}</AccountFormProvider>
         </AuthContextProvider>

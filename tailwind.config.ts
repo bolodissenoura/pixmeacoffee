@@ -12,12 +12,12 @@ const config: Config = {
         bkg1: "url('/public/bkg1.svg')",
       },
       fontFamily: {
-        primary: ["Mona-Sans"],
+        primary: ["Manrope"],
         secondary: ['"Open Sans"'],
       },
       colors: {
         primary: {
-          50: "#EDEDF8",
+          50: "#EEF3FF",
           100: "#D5DEFF",
           200: "#ABBDFF",
           300: "#819DFF",
@@ -42,6 +42,7 @@ const config: Config = {
         },
         badge: "#F1F5F9",
         badgeText: "#475569",
+        textGray: "#848199",
       },
       fontSize: {
         h1: [
