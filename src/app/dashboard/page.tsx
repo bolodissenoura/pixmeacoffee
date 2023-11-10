@@ -121,6 +121,7 @@ export default function Dashboard() {
           priority
         />
         <CardBadge
+          editable
           data={data}
           user={{ username: user?.displayName, photoURL: user.photoURL }}
         />

@@ -77,6 +77,7 @@ export default function Profile() {
       {pageData.status === "success" ? (
         <div className="flex flex-col gap-8">
           <CardBadge
+            editable={false}
             data={pageData?.data}
             user={{
               username: pageData?.username,

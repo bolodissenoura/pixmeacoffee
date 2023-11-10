@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { SocialLinksType } from "@/app/context/AccountFormContext";
 import SocialLinks from "./SocialLinks";
+import Link from "next/link";
 
 export interface DataCardInterface {
   page: string;
@@ -14,6 +15,7 @@ export interface DataCardInterface {
 interface CardBadgeInterface {
   user: { photoURL: string; username: string };
   data: DataCardInterface;
+  editable: boolean;
 }
 
 export default function CardBadge(props: CardBadgeInterface) {
@@ -85,20 +87,31 @@ export default function CardBadge(props: CardBadgeInterface) {
               </>
             ) : (
               <>
-                <Image
-                  src={"/empty-qrcode.svg"}
-                  className="rounded w-40"
-                  alt="Gif de garoto azul."
-                  width={206}
-                  height={206}
-                  priority
-                />
-                <p className="text-sm text-gray-900 ml-4 w-40">
-                  Seu qr-code aparecerá aqui. <br />
-                  <span className="text-primary-500">
-                    como gerar QR-code no meu banco?
-                  </span>
-                </p>
+                {props.editable ? (
+                  <>
+                    <Image
+                      src={"/empty-qrcode.svg"}
+                      className="rounded w-40"
+                      alt="Gif de garoto azul."
+                      width={206}
+                      height={206}
+                      priority
+                    />
+                    <div className="flex text-sm flex-col gap-0  ml-4 w-full">
+                      <p className="text-sm">
+                        Seu qr-code aparecerá aqui. <br />
+                      </p>
+                      <Link
+                        href="https://letmegooglethat.com/?q=como+gerar+o+qr-code+no+meu+banco+pelo+app+%3F"
+                        target="_blank"
+                        className="text-primary-500">
+                        como gerar QR-code no meu banco?
+                      </Link>
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
               </>
             )}
             {props.data.pixKey ? (
