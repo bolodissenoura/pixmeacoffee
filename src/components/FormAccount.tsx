@@ -288,7 +288,7 @@ export default function FormAccount(props: FormAccountInterface) {
                   zap: e.target.value,
                 })
               }
-              value={props.data.socialLinks.zap}
+              value={props.data.socialLinks?.zap}
               className={`bg-gray-50 p-4 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"
@@ -312,7 +312,7 @@ export default function FormAccount(props: FormAccountInterface) {
                   linkedin: e.target.value,
                 })
               }
-              value={props.data.socialLinks.linkedin}
+              value={props.data.socialLinks?.linkedin}
               className={`bg-gray-50 p-4 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"
@@ -336,7 +336,7 @@ export default function FormAccount(props: FormAccountInterface) {
                   x: e.target.value,
                 })
               }
-              value={props.data.socialLinks.x}
+              value={props.data.socialLinks?.x}
               className={`bg-gray-50 p-4 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"
@@ -360,7 +360,7 @@ export default function FormAccount(props: FormAccountInterface) {
                   twitch: e.target.value,
                 })
               }
-              value={props.data.socialLinks.twitch}
+              value={props.data.socialLinks?.twitch}
               className={`bg-gray-50 p-4 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"
@@ -384,7 +384,7 @@ export default function FormAccount(props: FormAccountInterface) {
                   sig: e.target.value,
                 })
               }
-              value={props.data.socialLinks.sig}
+              value={props.data.socialLinks?.sig}
               className={`bg-gray-50 p-4 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"
