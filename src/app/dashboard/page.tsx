@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import DashboardHeader from "@/components/DashboardHeader";
 import CardBadge from "@/components/CardBadge";
 import FormAccount from "@/components/FormAccount";
+import Image from "next/image";
+
 import {
   AccountForm,
   AccountFormInterface,
@@ -77,6 +79,16 @@ export default function Dashboard() {
         pixKey: data.pixKey,
         username: user?.displayName,
         photoURL: user?.photoURL,
+        city: data.city,
+        name: data.name,
+        socialLinks: {
+          instagram: data.socialLinks.instagram,
+          zap: data.socialLinks.zap,
+          linkedin: data.socialLinks.linkedin,
+          x: data.socialLinks.x,
+          twitch: data.socialLinks.twitch,
+          sig: data.socialLinks.sig,
+        },
         id: user?.uid,
       });
       toast.success("🎉 Página atualizada com sucesso.");
@@ -96,6 +108,14 @@ export default function Dashboard() {
       style={{ backgroundImage: "url(wpp.svg)" }}>
       <DashboardHeader user={user} handleLogOut={handleLogOut} />
       <div className="flex flex-col items-center md:items-start md:flex-row gap-8 w-fullwaiting md:px-40 pb-40 md:pb-0">
+        <Image
+          src={"cordinha.svg"}
+          alt="Foto do usuario"
+          className="absolute top-2 left-20 md:left-80 "
+          width={300}
+          height={300}
+          priority
+        />
         <CardBadge
           data={data}
           user={{ username: user?.displayName, photoURL: user.photoURL }}

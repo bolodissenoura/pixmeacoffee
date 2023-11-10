@@ -3,8 +3,12 @@ import React from "react";
 const AccountFormContext = React.createContext({} as any);
 
 export type SocialLinksType = {
-  name: "youtube" | "twitch" | "twitter" | "tabnews";
-  value: string;
+  instagram: string;
+  zap: string;
+  linkedin: string;
+  x: string;
+  twitch: string;
+  sig: string;
 };
 
 export type FormsStateType = {
@@ -27,8 +31,8 @@ export interface AccountFormInterface {
   setName: React.Dispatch<React.SetStateAction<string>>;
   city: string;
   setCity: React.Dispatch<React.SetStateAction<string>>;
-  socialLinks: SocialLinksType[];
-  setSocialLinks: React.Dispatch<React.SetStateAction<SocialLinksType[]>>;
+  socialLinks: SocialLinksType;
+  setSocialLinks: React.Dispatch<React.SetStateAction<SocialLinksType>>;
   status: FormsStateType;
   setStatus: React.Dispatch<React.SetStateAction<FormsStateType>>;
 }
@@ -39,7 +43,14 @@ export function AccountFormProvider({ children }: any) {
   const [pixKey, setPixKey] = React.useState<string>("");
   const [name, setName] = React.useState<string>("");
   const [city, setCity] = React.useState<string>("");
-  const [socialLinks, setSocialLinks] = React.useState<SocialLinksType[]>([]);
+  const [socialLinks, setSocialLinks] = React.useState<SocialLinksType>({
+    instagram: "",
+    zap: "",
+    linkedin: "",
+    x: "",
+    twitch: "",
+    sig: "",
+  });
   const [status, setStatus] = React.useState<FormsStateType>({
     pageStatus: "none",
     pageStatusMsg: "",

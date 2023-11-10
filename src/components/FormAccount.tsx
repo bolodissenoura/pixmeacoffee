@@ -257,9 +257,14 @@ export default function FormAccount(props: FormAccountInterface) {
             />
             <input
               type="text"
-              id="pixkey"
-              onChange={(e) => props.data.setPixKey(e.target.value)}
-              value={props.data.pixKey}
+              id="instagram"
+              onChange={(e) =>
+                props.data.setSocialLinks({
+                  ...props.data.socialLinks,
+                  instagram: e.target.value,
+                })
+              }
+              value={props.data.socialLinks.instagram}
               className={`bg-gray-50 p-4 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"
@@ -276,14 +281,19 @@ export default function FormAccount(props: FormAccountInterface) {
             />
             <input
               type="text"
-              id="pixkey"
-              onChange={(e) => props.data.setPixKey(e.target.value)}
-              value={props.data.pixKey}
+              id="zap"
+              onChange={(e) =>
+                props.data.setSocialLinks({
+                  ...props.data.socialLinks,
+                  zap: e.target.value,
+                })
+              }
+              value={props.data.socialLinks.zap}
               className={`bg-gray-50 p-4 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"
               )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-8/12 p-2.5`}
-              placeholder="@seuarroba"
+              placeholder="Seu número de telefone"
             />
           </div>
           <div className="flex gap-2">
@@ -295,9 +305,14 @@ export default function FormAccount(props: FormAccountInterface) {
             />
             <input
               type="text"
-              id="pixkey"
-              onChange={(e) => props.data.setPixKey(e.target.value)}
-              value={props.data.pixKey}
+              id="linkedin"
+              onChange={(e) =>
+                props.data.setSocialLinks({
+                  ...props.data.socialLinks,
+                  linkedin: e.target.value,
+                })
+              }
+              value={props.data.socialLinks.linkedin}
               className={`bg-gray-50 p-4 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"
@@ -314,9 +329,14 @@ export default function FormAccount(props: FormAccountInterface) {
             />
             <input
               type="text"
-              id="pixkey"
-              onChange={(e) => props.data.setPixKey(e.target.value)}
-              value={props.data.pixKey}
+              id="x"
+              onChange={(e) =>
+                props.data.setSocialLinks({
+                  ...props.data.socialLinks,
+                  x: e.target.value,
+                })
+              }
+              value={props.data.socialLinks.x}
               className={`bg-gray-50 p-4 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"
@@ -333,9 +353,14 @@ export default function FormAccount(props: FormAccountInterface) {
             />
             <input
               type="text"
-              id="pixkey"
-              onChange={(e) => props.data.setPixKey(e.target.value)}
-              value={props.data.pixKey}
+              id="twitch"
+              onChange={(e) =>
+                props.data.setSocialLinks({
+                  ...props.data.socialLinks,
+                  twitch: e.target.value,
+                })
+              }
+              value={props.data.socialLinks.twitch}
               className={`bg-gray-50 p-4 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"
@@ -352,9 +377,14 @@ export default function FormAccount(props: FormAccountInterface) {
             />
             <input
               type="text"
-              id="pixkey"
-              onChange={(e) => props.data.setPixKey(e.target.value)}
-              value={props.data.pixKey}
+              id="sig"
+              onChange={(e) =>
+                props.data.setSocialLinks({
+                  ...props.data.socialLinks,
+                  sig: e.target.value,
+                })
+              }
+              value={props.data.socialLinks.sig}
               className={`bg-gray-50 p-4 border ${inputColor(
                 props.data.status?.pageStatus,
                 "border"

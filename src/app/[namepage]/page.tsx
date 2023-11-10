@@ -23,7 +23,14 @@ export default function Profile() {
       page: "",
       pixKey: "",
       description: "",
-      socialLinks: [],
+      socialLinks: {
+        instagram: "",
+        zap: "",
+        linkedin: "",
+        x: "",
+        twitch: "",
+        sig: "",
+      },
     },
     username: "",
     photoURL: "",
@@ -47,7 +54,7 @@ export default function Profile() {
                 page: doc.data().namepage,
                 pixKey: doc.data().pixKey,
                 description: doc.data().description,
-                socialLinks: [],
+                socialLinks: doc.data().socialLinks,
               },
               username: doc.data().username,
               photoURL: doc.data().photoURL,
@@ -62,7 +69,9 @@ export default function Profile() {
     getDocs(q);
   }, []);
   return (
-    <div className="bg-black h-screen w-full flex justify-center">
+    <div
+      className="bg-primary-50 w-full flex justify-center min-h-screen md:pb-10"
+      style={{ backgroundImage: "url(wpp.svg)" }}>
       {pageData.status === "success" ? (
         <div className="flex flex-col gap-8">
           <CardBadge
@@ -84,13 +93,13 @@ export default function Profile() {
       {pageData.status === "error" ? (
         <>
           <div className="flex flex-col text-center justify-center items-center gap-4">
-            <p className="text text-white">Essa página ainda não existe.</p>
-            <p className="text text-white">
+            <p className="text text-black">Essa página ainda não existe.</p>
+            <p className="text text-black">
               Aproveite e tenha sua página pixmeacoffee com esse nome!
             </p>
             <Image
               src={"/bug.gif"}
-              className="rounded shadow"
+              className="rounded"
               alt="Inseto com a barriga pra cima."
               width={150}
               height={150}
