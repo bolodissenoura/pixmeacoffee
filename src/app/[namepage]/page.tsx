@@ -89,7 +89,8 @@ export default function Profile() {
             <div className="rounded-full bg-primary-500 py-2 md:px-4 px-2 text-white text-center">
               Criar minha página 100% grátis
             </div>
-          </Link> */}
+          </Link> */
+          }
         </div>
       ) : (
         <></>
