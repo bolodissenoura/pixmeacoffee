@@ -31,6 +31,7 @@ export default function Profile() {
         x: "",
         twitch: "",
         sig: "",
+        youtube: "",
       },
     },
     username: "",
