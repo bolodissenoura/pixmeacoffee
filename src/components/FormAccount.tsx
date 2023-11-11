@@ -392,6 +392,30 @@ export default function FormAccount(props: FormAccountInterface) {
               placeholder="@seuarroba"
             />
           </div>
+          <div className="flex gap-2">
+            <Image
+              src="/social/youtube.svg"
+              alt="Social media icone"
+              width={32}
+              height={32}
+            />
+            <input
+              type="text"
+              id="youtube"
+              onChange={(e) =>
+                props.data.setSocialLinks({
+                  ...props.data.socialLinks,
+                  youtube: e.target.value,
+                })
+              }
+              value={props.data.socialLinks?.youtube}
+              className={`bg-gray-50 p-4 border ${inputColor(
+                props.data.status?.pageStatus,
+                "border"
+              )} border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-8/12 p-2.5`}
+              placeholder="@seucanal"
+            />
+          </div>
         </div>
       </div>
       <button
