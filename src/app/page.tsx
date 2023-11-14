@@ -19,7 +19,7 @@ export default function Home() {
           </h2>
           <div className="bg-white rounded-full shadow-lg shadow-primary-500 w-full h-14 flex items-center justify-between px-2 md:px-4">
             <h2 className="font-bold md:text-2xl lg:text-2xl">
-              pixmeacoffe.com.br/
+              pixme.bio/
               <span className="text-primary-500">seunome</span>
             </h2>
             <Link href={"/login"}>
