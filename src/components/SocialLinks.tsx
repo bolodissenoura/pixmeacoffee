@@ -113,6 +113,23 @@ export default function SocialLinks(props: SocialLinksInterface) {
         ) : (
           <></>
         )}
+        {props.data?.sig ? (
+          <>
+            <Link
+              href={`https://youtube.com/${props.data?.youtube}`}
+              target="_blank">
+              <Image
+                src={"/social/youtube.svg"}
+                alt="Youtube icon."
+                width={32}
+                height={32}
+                priority
+              />
+            </Link>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );
