@@ -94,6 +94,7 @@ export default function Dashboard() {
           x: data.socialLinks?.x,
           twitch: data.socialLinks?.twitch,
           sig: data.socialLinks?.sig,
+          youtube: data.socialLinks?.sig,
         },
         id: user?.uid,
       });
