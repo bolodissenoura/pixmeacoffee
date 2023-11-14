@@ -64,9 +64,7 @@ export default function SocialLinks(props: SocialLinksInterface) {
         )}
         {props.data?.x ? (
           <>
-            <Link
-              href={`https://x.com/${props.data?.x}`}
-              target="_blank">
+            <Link href={`https://x.com/${props.data?.x}`} target="_blank">
               <Image
                 src={"/social/x.svg"}
                 alt="X icon."
@@ -96,7 +94,7 @@ export default function SocialLinks(props: SocialLinksInterface) {
         ) : (
           <></>
         )}
-        {props.data?.sig ? (
+        {/* {props.data?.sig ? (
           <>
             <Link
               href={`https://biome.sigcoding.com/${props.data?.sig}`}
@@ -104,6 +102,23 @@ export default function SocialLinks(props: SocialLinksInterface) {
               <Image
                 src={"/social/sig.svg"}
                 alt="Sig icon."
+                width={32}
+                height={32}
+                priority
+              />
+            </Link>
+          </>
+        ) : (
+          <></>
+        )} */}
+        {props.data?.youtube ? (
+          <>
+            <Link
+              href={`https://youtube.com/${props.data?.youtube}`}
+              target="_blank">
+              <Image
+                src={"/social/youtube.svg"}
+                alt="Youtube icon."
                 width={32}
                 height={32}
                 priority

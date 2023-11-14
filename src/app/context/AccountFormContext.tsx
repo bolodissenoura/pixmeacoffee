@@ -9,6 +9,7 @@ export type SocialLinksType = {
   x: string;
   twitch: string;
   sig: string;
+  youtube: string;
 };
 
 export type FormsStateType = {
@@ -53,6 +54,7 @@ export function AccountFormProvider({ children }: any) {
     x: "",
     twitch: "",
     sig: "",
+    youtube: "",
   });
   const [status, setStatus] = React.useState<FormsStateType>({
     pageStatus: "none",
