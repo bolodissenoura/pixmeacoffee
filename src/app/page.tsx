@@ -13,9 +13,8 @@ export default function Home() {
             <span className="text-primary-500">fácil</span>.
           </h1>
           <h2 className="font-bold text-xl">
-            Receba no pix sem taxas. <br />
-            <span className="text-primary-500">100%</span> Grátis. Como o pix
-            deve ser :)
+            Tudo sobre você ou sua empresa. <br />
+            <span className="text-primary-500">Em um único</span> link na sua bio.
           </h2>
           <div className="bg-white rounded-full shadow-lg shadow-primary-500 w-full h-14 flex items-center justify-between px-2 md:px-4">
             <h2 className="font-bold md:text-2xl lg:text-2xl">
