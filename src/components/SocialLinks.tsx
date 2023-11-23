@@ -114,7 +114,7 @@ export default function SocialLinks(props: SocialLinksInterface) {
         {props.data?.youtube ? (
           <>
             <Link
-              href={`https://youtube.com/${props.data?.youtube}`}
+              href={`https://youtube.com/channel/${props.data?.youtube}`}
               target="_blank">
               <Image
                 src={"/social/youtube.svg"}
