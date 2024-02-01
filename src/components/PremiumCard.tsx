@@ -26,7 +26,7 @@ export default function PremiumCard() {
       </ul>
       <div className="flex flex-col">
         <Image src={"premium.svg"} alt="coffee" width={300} height={300} />
-        <Link href={"x.com/danillime"} target="_blank">
+        <Link href={"https://x.com/daniellimae"} target="_blank">
           <div className="flex gap-2 justify-center items-center bold text-primary-500">
             <p>Saiba mais</p>
             <span className="text-2xl">{">"}</span>
