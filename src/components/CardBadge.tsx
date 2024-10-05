@@ -3,6 +3,7 @@ import Image from "next/image";
 import { SocialLinksType } from "@/app/context/AccountFormContext";
 import SocialLinks from "./SocialLinks";
 import Link from "next/link";
+import QRCode from "react-qr-code";
 
 export interface DataCardInterface {
   page: string;
@@ -76,14 +77,7 @@ export default function CardBadge(props: CardBadgeInterface) {
           <div className="w-full flex flex-col justify-center items-center gap-4">
             {props.data.qrCode?.length > 20 ? (
               <>
-                <Image
-                  src={`https://api.qrserver.com/v1/create-qr-code/?size=206x206&data=${props.data.qrCode}`}
-                  className="w-40"
-                  alt="Pix qr code."
-                  width={250}
-                  height={250}
-                  priority
-                />
+               <QRCode level="L" size={206} value={props.data.qrCode} />
               </>
             ) : (
               <>
