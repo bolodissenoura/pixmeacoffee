@@ -1,11 +1,6 @@
 
 <div align="center">
-
-
-![image](https://cdn.discordapp.com/attachments/1082297301072105544/1159499721426079904/image.png?ex=65313f44&is=651eca44&hm=86a23dd870f6ebde86770988524a93928d75dbd37a4acaba7c4eefc3de0fb0d6&)
-
-
-
+<img src="https://pixmeacoffee.vercel.app/img-3.svg" width="375">
 </div>
 
 ---
